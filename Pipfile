@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 python-openstackclient = "*"
+ansible = "*"
 
 [dev-packages]
 
