@@ -1,0 +1,5 @@
+---
+# base.yml
+- hosts: base_image
+  roles:
+    - base

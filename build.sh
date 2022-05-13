@@ -12,6 +12,8 @@ else
   packer build -only="step1.openstack.base_image" .
 fi
 
+exit 0
+
 if openstack image show "${DATABASE_IMAGE_NAME}" &> /dev/null
 then
   echo "Openstack image '${DATABASE_IMAGE_NAME}' found"

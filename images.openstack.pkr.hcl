@@ -35,10 +35,26 @@ source "openstack" "database_image" {
 
 build {
   name = "step1"
-  sources = ["source.openstack.base_image"]
+  sources = [
+    "source.openstack.base_image"
+   ]
+  provisioner "ansible" {
+    use_proxy = false
+    playbook_file = "./base.yml"
+    ansible_env_vars = [
+      "ANSIBLE_SSH_ARGS='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o AddKeysToAgent=no -o IdentitiesOnly=yes'"
+    ]
+//    extra_arguments = ["-vvv"]
+    user = "${var.admin_user}"
+    groups = [
+      "base_image"
+    ]
+  }
 }
 
 build {
   name = "step2"
-  sources = ["source.openstack.database_image"]
+  sources = [
+    "source.openstack.database_image"
+  ]
 }
