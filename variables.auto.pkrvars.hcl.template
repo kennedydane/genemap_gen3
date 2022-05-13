@@ -1,0 +1,5 @@
+admin_user = "ubuntu"
+build_image_flavour = "ilifu-A"
+base_image_source = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+base_image_name = "gen3.ubuntu.jammy.22_04.base"
+database_image_name = "gen3.ubuntu.jammy.22_04.database"
