@@ -30,6 +30,8 @@ In otherwords once you have the `*-openrc.sh` file you will need to run
 your OpenStack login details at the time of sourcing.
 
 ## Setting up variables
+
+### Packer and Terraform
 The first thing to do is to configure all the variables in your system. A template file
 is provided — `variables.pkr.hcl.template`. Create a copy of this named `variables.pkr.hcl`
 and edit the contents. The variables to be set are as follows:
@@ -46,6 +48,10 @@ however it is advisable to use the same naming scheme for easy identification.
 * *database_image_name*: This is the name the database image will be saved as. You can
 customise this, however it is advisable to use the same naming scheme for easy
 identification.
+
+### Ansible
+You can modify the ansible `group_vars/all` file to reflect some settings such as:
+* *timezone*: This is the time zone setting for all the virtual machines.
 
 ## Building the images
 Once the variables have been configured (the `build_image_flavour` is probably the most
