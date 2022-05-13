@@ -1,1 +1,3 @@
 .idea/
+variables.auto.pkrvars.hcl
+variables.pkr.hcl
