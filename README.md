@@ -47,14 +47,15 @@ however it is advisable to use the same naming scheme for easy identification.
 customise this, however it is advisable to use the same naming scheme for easy
 identification.
 
-## Building the base image
+## Building the images
 Once the variables have been configured (the `build_image_flavour` is probably the most
-important as this often varies from system to system) the base image can be built. This
+important as this often varies from system to system) the images can be built. This
 can be done with the command:
 ```shell
-$ packer build -var-file=variables.json base.openstack.pkr.hcl
+$ ./build.sh
 ```
 
-## Building the database image
+The script checks for the existence of the target images on OpenStack. If they already
+exist, nothing happens. Otherwise the images are built.
 
 
