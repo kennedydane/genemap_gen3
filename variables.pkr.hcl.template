@@ -4,7 +4,7 @@ variable "admin_user" {
   type = string
 }
 
-variable "build_image_flavour" {
+variable "base_image_name" {
   type = string
 }
 
@@ -12,10 +12,26 @@ variable "base_image_source" {
   type = string
 }
 
-variable "base_image_name" {
+variable "base_image_source_format" {
+  type = string
+}
+
+variable "build_image_flavour" {
   type = string
 }
 
 variable "database_image_name" {
   type = string
+}
+
+variable "floating_ip_network_id" {
+  type = string
+}
+
+variable "network_ids" {
+  type = list(string)
+}
+
+variable "security_groups" {
+  type = list(string)
 }

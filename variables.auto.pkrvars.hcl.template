@@ -1,5 +1,10 @@
 admin_user = "ubuntu"
+base_image_name = "gen3.elwazi.ubuntu.20_04.base"
+//base_image_source = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+base_image_source = "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img"
+base_image_source_format = "qcow2"
 build_image_flavour = "ilifu-A"
-base_image_source = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
-base_image_name = "gen3.ubuntu.jammy.22_04.base"
-database_image_name = "gen3.ubuntu.jammy.22_04.database"
+database_image_name = "gen3.elwazi.ubuntu.20_04.database"
+floating_ip_network_id = "f99ab9af-902c-494b-abfc-32ccd5716234"
+network_ids = ["b6f4dd55-7097-4b7d-a998-0a1d6c101c29"]
+security_groups = ["07940fba-2a99-42e4-851b-8f226144c9bd"]
