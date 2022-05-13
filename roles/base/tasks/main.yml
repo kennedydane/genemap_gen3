@@ -2,6 +2,7 @@
 # tasks file for base
 
 - name: Update timezone
+  become: yes
   file:
     src: /usr/share/zoneinfo/{{ timezone }}
     dest: /etc/localtime
@@ -9,6 +10,7 @@
   notify: update tzdata
 
 - name: Upgrade all existing packages
+  become: yes
   apt:
     upgrade: dist
     update-cache: yes
@@ -17,4 +19,3 @@
   retries: 3
   delay: 15
   until: apt_res is success
-  become: yes
