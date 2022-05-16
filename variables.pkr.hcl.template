@@ -24,6 +24,10 @@ variable "database_image_name" {
   type = string
 }
 
+variable "docker_image_name" {
+  type = string
+}
+
 variable "floating_ip_network_id" {
   type = string
 }

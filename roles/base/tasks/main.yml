@@ -2,6 +2,7 @@
 # tasks file for base
 
 - name: Update timezone
+  tags: build
   become: yes
   file:
     src: /usr/share/zoneinfo/{{ timezone }}
@@ -10,6 +11,7 @@
   notify: update tzdata
 
 - name: Upgrade all existing packages
+  tags: build
   become: yes
   apt:
     upgrade: dist
