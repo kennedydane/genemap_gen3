@@ -1,23 +1,32 @@
 ---
 # tasks file for base
-
-- name: Update timezone
-  tags: build
+- name: Initialise base image
   become: yes
-  file:
-    src: /usr/share/zoneinfo/{{ timezone }}
-    dest: /etc/localtime
-    state: link
-  notify: update tzdata
+  tags: build, never
+  block:
+    - name: Update timezone
+      file:
+        src: /usr/share/zoneinfo/{{ timezone }}
+        dest: /etc/localtime
+        state: link
+      notify: update tzdata
 
-- name: Upgrade all existing packages
-  tags: build
-  become: yes
-  apt:
-    upgrade: dist
-    update-cache: yes
-    autoremove: yes
-  register: apt_res
-  retries: 3
-  delay: 15
-  until: apt_res is success
+    - name: Upgrade all existing packages
+      apt:
+        upgrade: dist
+        update-cache: yes
+      register: apt_res
+      retries: 3
+      delay: 15
+      until: apt_res is success
+
+    - name: Install commonly used packages
+      tags: build
+      apt:
+        name:
+          - tmux
+
+    - name: Clean up packages
+      apt:
+        autoclean: yes
+        autoremove: yes
