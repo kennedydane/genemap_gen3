@@ -1,0 +1,10 @@
+---
+# tasks file for building database image
+- name: Configure Postgres database
+  become: yes
+  tags: build, never
+  block:
+    - name: Ensure psycopg2 is installed and is latest version
+      apt:
+        name: python3-psycopg2
+        state: latest

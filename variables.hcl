@@ -63,6 +63,11 @@ variable "docker_node_flavour" {
   description = "OpenStack VM flavour to use for the docker node"
 }
 
+variable "floating_ip_pool_name" {
+  type = string
+  description = "OpenStack Floating IP address pool name"
+}
+
 variable "name_prefix" {
   type = string
   description = "Name used in terraform infrastructure"

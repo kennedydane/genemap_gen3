@@ -14,7 +14,7 @@ resource "openstack_networking_subnet_v2" "gen3_subnet" {
 }
 
 data "openstack_networking_network_v2" "public" {
-  name = "Ext_Floating_IP"
+  name = var.floating_ip_pool_name
 }
 
 resource "openstack_networking_router_v2" "gen3_router" {
@@ -67,4 +67,8 @@ resource "openstack_networking_secgroup_rule_v2" "ssh" {
   port_range_max    = 22
   remote_ip_prefix  = "0.0.0.0/0"
   security_group_id = openstack_networking_secgroup_v2.gen3_ssh.id
+}
+
+resource "openstack_networking_floatingip_v2" "database_float_ip" {
+  pool = "${var.floating_ip_pool_name}"
 }

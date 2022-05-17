@@ -3,3 +3,7 @@
 - hosts: database_image
   roles:
     - database
+
+- hosts: database
+  roles:
+    - database
