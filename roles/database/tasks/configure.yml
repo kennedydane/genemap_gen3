@@ -5,7 +5,7 @@
   tags:
     - postgres
   block:
-    - name: Ensure psycopg2 and libpq-dev are installed and are latest version
+    - name: Ensure acl, psycopg2 and libpq-dev are installed and are latest version
       tags:
         - psycopg2
       apt:
@@ -31,4 +31,11 @@
         path: "/etc/postgresql/{{ postgres_version.version.major }}/main/postgresql.conf"
         regex: "^listen_addresses.*"
         line: "listen_addresses = '{% for ip in ansible_all_ipv4_addresses %}{{ ip }}{% if not loop.last %}, {% endif %}{% endfor %}, localhost'"
+      notify: Restart postgres
+
+    - name: Configure postgres to allow connections on subnet
+      lineinfile:
+        path: "/etc/postgresql/12/main/pg_hba.conf"
+        regex: "host *all *all *{{ gen3_subnet }} *md5"
+        line: "host    all             all             {{ gen3_subnet }}         md5"
       notify: Restart postgres
