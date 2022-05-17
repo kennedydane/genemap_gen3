@@ -84,9 +84,11 @@ exist, nothing happens. Otherwise, the images are built.
 The machines are first deployed with terraform. Firstly the environment must be
 initialised with `terraform init`. Afterwards `terraform plan` and `terraform apply`
 can be used to actually create the infrastructure including: the network and subnetwork;
-the security groups; the docker node; the database node.
+the security groups; the docker node; the database node. This will also create an
+`inventory` file which can be used with ansible.
 
 ## Infrastructure Configuration
-Finally the infrastructure can be configured using ansible.
+Finally the infrastructure can be configured using ansible. This can be done by running:
+`ansible-playbook -i inventory site.yml`.
 
 
