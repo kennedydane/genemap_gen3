@@ -2,23 +2,25 @@
 Repository for keeping track of eLwazi private openstack gen3 infrastructure and
 documentation.
 
-# Setting up the infrastructure on OpenStack using Packer, Terraform and ansible
-The infrastructure is managed with a set of scripts that make use of Packer (for creating
-the OpenStack virtual machine images that are used), Terraform (for deploying
-infrastructure on OpenStack), and finally ansible for configuring the infrastructure.
+# Setting up the infrastructure on OpenStack using Packer, Terraform and Ansible
+The infrastructure is managed with a set of scripts that make use of
+[Packer](https://www.packer.io/) (for creating the OpenStack virtual machine images
+that are used), [Terraform](https://www.terraform.io/) (for deploying  infrastructure
+on OpenStack), and finally [Ansible](https://www.ansible.com/) for configuring the
+infrastructure.
 
 ## Installing software requirements on your machine
-You will need to install packer and terraform in addition to setting up a
-python virtual environment. Packer and Terraform can be installed by setting up the
-appropriate repositories and installing using your OS's package manager. The python
-virtual environment is ideally set up using pipenv by running the `pipenv sync`
-command. Alternatively ensure you have a python virtual environment with both
-the `python-openstackclient` and `ansible` packages installed.
+You will need to install [Packer](https://learn.hashicorp.com/tutorials/packer/get-started-install-cli)
+and [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli) in
+addition to setting up a python virtual environment. Packer and Terraform can be
+installed by setting up the appropriate repositories and installing using your OS's
+package manager. The python virtual environment is ideally set up using pipenv by
+running the `pipenv sync` command. Alternatively ensure you have a python virtual
+environment with both the `python-openstackclient` and `ansible` packages installed.
 
 ### Initialising packer
-It is important to run `packer init base.openstack.pkr.hcl` once in your environment. This
+It is important to run `packer init images.openstack.pkr.hcl` once in your environment. This
 will ensure that the packer OpenStack plugin is installed.
-
 
 ## Get your OpenStack.rc file
 Connect to your OpenStack dashboard, switch to the correct project then download the
@@ -30,27 +32,24 @@ In otherwords once you have the `*-openrc.sh` file you will need to run
 your OpenStack login details at the time of sourcing.
 
 ## Setting up variables
+There are only two files that should need configuring for this installation and these are
+contain the variables that Packer/Terraform and Ansible use.
 
 ### Packer and Terraform
-The first thing to do is to configure all the variables in your system. A template file
-is provided — `variables.auto.hcl.template`. Create a copy of this named `variables.auto.hcl`
-and edit the contents (note that there are two files: `gen3.auto.tfvars` and `` that point at this file and
-are used by both Packer and Terraform). The variables to be set are as follows:
-* *admin_user*: This is the admin user on your images. For ubuntu-based images this is 
-usually `ubuntu`.
-* *build_image_flavor*: This is the VM machine flavour that is used when creating the base
-images. It can be a very low-spec machine as very little is done here apart from configuring
-the initial environment.
-* *base_image_source*: This is the starting point for your image. The default we've used
-here is pointing to the latest ubuntu 22.04 nightly build, however you can customise this
-to an image on your openstack environment (use the image ID).
-* *base_image_name*: This is the name the image will be saved as. You can customise this,
-however it is advisable to use the same naming scheme for easy identification.
-* *database_image_name*: This is the name the database image will be saved as. You can
-customise this, however it is advisable to use the same naming scheme for easy
-identification.
+The Packer and Terraform variables should be in a file named `variables.auto.hcl` and this
+can be made by copying the template file, i.e. `cp variables.auto.hcl.template variables.auto.hcl`.
+Note that there are symbolic link files (`gen3.auto.tfvars` and
+`gen3.auto.pkrvars.hcl`) that point at `variables.auto.hcl` and are auto-loaded by Packer
+and Terraform. A description of the required variables can be found in the file `variables.hcl`.
+Edit the contents in order to both personalise your gen3 instance and ensure that both
+Packer and Terraform will use the correct values for your OpenStack, e.g. you will almost
+certainly need to change the values of: `build_image_flavour`, `database_node_flavour` and
+`docker_node_flavour` so that appropriate OpenStack Virtual Machine flavours are used.
 
 ### Ansible
+Ansible requires some of its own variables and these can be created by setting up the
+`group_vars/all` by using the template, i.e. `cp group_vars/all.template group_vars/all`
+and then updating the contents.
 You can modify the ansible `group_vars/all` file to reflect some settings such as:
 * *timezone*: This is the time zone setting for all the virtual machines.
 
@@ -61,8 +60,16 @@ can be done with the command:
 ```shell
 $ ./build.sh
 ```
-
 The script checks for the existence of the target images on OpenStack. If they already
-exist, nothing happens. Otherwise the images are built.
+exist, nothing happens. Otherwise, the images are built.
+
+## Deploying with Terraform
+The machines are first deployed with terraform. Firstly the environment must be
+initialised with `terraform init`. Afterwards `terraform plan` and `terraform apply`
+can be used to actually create the infrastructure including: the network and subnetwork;
+the security groups; the docker node; the database node.
+
+## Infrastructure Configuration
+Finally the infrastructure can be configured using ansible.
 
 
