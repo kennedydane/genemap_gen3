@@ -1,10 +1,10 @@
 resource "openstack_networking_network_v2" "gen3_network" {
-    name = "${var.name_prefix}_net"
+    name = "${var.name_prefix}-net"
     admin_state_up = "true"
 }
 
 resource "openstack_networking_subnet_v2" "gen3_subnet" {
-    name = "${var.name_prefix}_subnet"
+    name = "${var.name_prefix}-subnet"
     network_id = openstack_networking_network_v2.gen3_network.id
     cidr = "192.168.10.0/24"
     ip_version = 4
@@ -18,7 +18,7 @@ data "openstack_networking_network_v2" "public" {
 }
 
 resource "openstack_networking_router_v2" "gen3_router" {
-  name                = "${var.name_prefix}_router"
+  name                = "${var.name_prefix}-router"
   admin_state_up      = true
   external_network_id = data.openstack_networking_network_v2.public.id
 }
@@ -30,7 +30,7 @@ resource "openstack_networking_router_interface_v2" "gen3_router_interface" {
 }
 
 resource "openstack_networking_secgroup_v2" "gen3_web" {
-  name        = "secgroup_${var.name_prefix}_web"
+  name        = "${var.name_prefix}-web"
   description = "To access the gen3 web services"
 }
 
@@ -55,7 +55,7 @@ resource "openstack_networking_secgroup_rule_v2" "https" {
 }
 
 resource "openstack_networking_secgroup_v2" "gen3_ssh" {
-  name        = "secgroup_${var.name_prefix}_ssh"
+  name        = "${var.name_prefix}-ssh"
   description = "To access gen3 ssh"
 }
 

@@ -14,4 +14,8 @@ security_groups = ["07940fba-2a99-42e4-851b-8f226144c9bd"]
 
 # Terraform variables
 
-name_prefix = "gen3.elwazi"
+database_node_flavour = "ilifu-B"
+docker_node_flavour = "ilifu-B"
+name_prefix = "gen3-elwazi"
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDY2pS7TXi2csK46NPff6Nyz8v0jGcXW/zTGMTI/WymnhzBnaqSdMCrsl2WcbtQ5igu1+O8FOgZb6Mp3cX06Kxia5SlE9q5qRmQlQknKFn+9OEezrEUKTGJb9yAG+rBu5NJ46A9KD+c/vg47VO0wiWT1DyqJ+ih/9QFOTyKAh+Lt9yyXvnkJmRi1EW1esGEuczYJd1HJvamKojl7YUlcPaSwkNfSUg1hmQbqrAzSlW2MD4UsONGIWsyur+xg0/BeiqjMJgCoWcHKoxVxpiraYEhZxBj9oRqIxZNtDex/0oJ4JKojO3JiO9Gb8dUnYnUjzWbZUFfgr4n6QdSMycg5oun41MtFdofVOD8ug8HyjDNYh3D4Z0xXzakHVIRJAxkr+Moyq2WTyhOXhMJfGRtk68+lw5gUWUTBYCj3Qv3pKa5PjMbV3dFKYy2882481D26yuTJrBmtSalVFASHeGY/kbuNT78QcX/HHUx7m1rJQbM7PplzEaPDanHnEAqNe667MsSgw0XuFQA3hTFsaFydDguTZj74dL0b6SnWx7AyKuwPK/RzkhPYCckxT4/wssxQ667/oqI4j/v4i9D32AfgEZMjZzgH/Ki0CGHyFNW5MxRCcRXPvMJQ2OwWyzHh4UFYkOKtfXyoOFlfZP9qcBzQzwqM7kdXO+av2KcelTJmwGNkw== dane@dane-ideapas-110s"
+

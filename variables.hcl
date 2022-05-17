@@ -53,7 +53,22 @@ variable "security_groups" {
 
 # Terraform Variables
 
+variable "database_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the database node"
+}
+
+variable "docker_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the docker node"
+}
+
 variable "name_prefix" {
   type = string
   description = "Name used in terraform infrastructure"
+}
+
+variable "ssh_public_key" {
+  type = string
+  description = "Your ssh public key"
 }
