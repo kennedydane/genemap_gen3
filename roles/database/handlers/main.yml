@@ -1,2 +1,9 @@
 ---
 # handlers file for database
+
+- name: Restart postgres
+  become: yes
+  systemd:
+    name: postgresql
+    state: restarted
+

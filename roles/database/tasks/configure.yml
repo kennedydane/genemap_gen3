@@ -5,9 +5,30 @@
   tags:
     - postgres
   block:
-    - name: Ensure psycopg2 is installed and is latest version
+    - name: Ensure psycopg2 and libpq-dev are installed and are latest version
       tags:
         - psycopg2
       apt:
-        name: python3-psycopg2
+        name:
+          - acl
+          - python3-psycopg2
+          - libpq-dev
         state: latest
+
+    - name: Get postgres version information
+      become: yes
+      become_user: postgres
+      community.postgresql.postgresql_info:
+        filter: version
+      register: postgres_version
+
+#    - name: Output postgres version
+#      debug:
+#        msg: "{{ postgres_version.version.major }}"
+
+    - name: Configure postgres to listen to local network
+      lineinfile:
+        path: "/etc/postgresql/{{ postgres_version.version.major }}/main/postgresql.conf"
+        regex: "^listen_addresses.*"
+        line: "listen_addresses = '{% for ip in ansible_all_ipv4_addresses %}{{ ip }}{% if not loop.last %}, {% endif %}{% endfor %}, localhost'"
+      notify: Restart postgres
