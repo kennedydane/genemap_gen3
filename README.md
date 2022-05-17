@@ -33,8 +33,9 @@ your OpenStack login details at the time of sourcing.
 
 ### Packer and Terraform
 The first thing to do is to configure all the variables in your system. A template file
-is provided — `variables.pkr.hcl.template`. Create a copy of this named `variables.pkr.hcl`
-and edit the contents. The variables to be set are as follows:
+is provided — `variables.auto.hcl.template`. Create a copy of this named `variables.auto.hcl`
+and edit the contents (note that there are two files: `gen3.auto.tfvars` and `` that point at this file and
+are used by both Packer and Terraform). The variables to be set are as follows:
 * *admin_user*: This is the admin user on your images. For ubuntu-based images this is 
 usually `ubuntu`.
 * *build_image_flavor*: This is the VM machine flavour that is used when creating the base

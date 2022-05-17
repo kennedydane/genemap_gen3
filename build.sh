@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-BASE_IMAGE_NAME=$(grep "^base_image_name" variables.auto.pkrvars.hcl | sed 's/.*= "\(.*\)"$/\1/')
-DATABASE_IMAGE_NAME=$(grep "^database_image_name" variables.auto.pkrvars.hcl | sed 's/.*= "\(.*\)"$/\1/')
-DOCKER_IMAGE_NAME=$(grep "^docker_image_name" variables.auto.pkrvars.hcl | sed 's/.*= "\(.*\)"$/\1/')
+VARIABLES_FILE=gen3.auto.pkrvars.hcl
+
+BASE_IMAGE_NAME=$(grep "^base_image_name" ${VARIABLES_FILE} | sed 's/.*= "\(.*\)"$/\1/')
+DATABASE_IMAGE_NAME=$(grep "^database_image_name" ${VARIABLES_FILE} | sed 's/.*= "\(.*\)"$/\1/')
+DOCKER_IMAGE_NAME=$(grep "^docker_image_name" ${VARIABLES_FILE} | sed 's/.*= "\(.*\)"$/\1/')
 
 if openstack image show "${BASE_IMAGE_NAME}" &> /dev/null
 then

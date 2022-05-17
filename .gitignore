@@ -1,5 +1,4 @@
 .idea/
-variables.auto.pkrvars.hcl
 .terraform.lock.hcl
 .terraform/
 terraform.tfstate*
