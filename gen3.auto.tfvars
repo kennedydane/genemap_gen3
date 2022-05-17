@@ -1,1 +1,1 @@
-variables.auto.pkrvars.hcl.template
+variables.auto.hcl
