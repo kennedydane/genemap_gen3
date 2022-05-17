@@ -4,3 +4,4 @@ variables.pkr.hcl
 .terraform.lock.hcl
 .terraform/
 gen3.auto.tfvars
+terraform.tfstate*
