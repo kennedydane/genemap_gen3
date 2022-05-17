@@ -58,8 +58,10 @@ The variables to be set are:
 * `security_groups`: Security groups to be used (this should include an incoming ssh rule…)
 * `database_node_flavour`: OpenStack VM flavour to use for the database node
 * `docker_node_flavour`: OpenStack VM flavour to use for the docker node
+* `floating_ip_pool_name`: OpenStack Floating IP address pool name
 * `name_prefix`: Name used in terraform infrastructure
 * `ssh_public_key`: Your ssh public key
+
 
 ### Ansible
 Ansible requires some of its own variables and these can be created by setting up the

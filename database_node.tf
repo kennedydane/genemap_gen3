@@ -10,6 +10,11 @@ resource "openstack_compute_instance_v2" "database_node" {
   }
 }
 
+resource "openstack_compute_floatingip_associate_v2" "database_fip" {
+  floating_ip = openstack_networking_floatingip_v2.database_float_ip.address
+  instance_id = openstack_compute_instance_v2.database_node.id
+}
+
 #output "compute_instances" {
 #  description = "All the slurm compute nodes' names"
 #  value       = "${openstack_compute_instance_v2.slurm_compute.*.name}"

@@ -1,0 +1,46 @@
+---
+# tasks file for building database image
+- name: Initialise docker image
+  become: yes
+  tags: build, never
+  block:
+    - name: Upgrade all existing packages
+      apt:
+        upgrade: full
+        update-cache: yes
+      register: apt_res
+      retries: 3
+      delay: 15
+      until: apt_res is success
+
+    - name: Install required packages
+      apt:
+        name:
+          - postgresql
+          - postgresql-contrib
+          - default-jre
+        update-cache: yes
+
+    - name: Add elasticsearch repo key
+      apt_key:
+        url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+        state: present
+
+    - name: Add elasticsearch repository
+      apt_repository:
+        repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
+
+    - name: Install elasticsearch
+      apt:
+        name: elasticsearch
+        update-cache: yes
+
+    - name: Enable elasticsearch service
+      systemd:
+        name: elasticsearch
+        enabled: yes
+
+    - name: Clean up packages
+      apt:
+        autoclean: yes
+        autoremove: yes
