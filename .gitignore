@@ -3,3 +3,4 @@ variables.auto.pkrvars.hcl
 variables.pkr.hcl
 .terraform.lock.hcl
 .terraform/
+terraform.tfvars
