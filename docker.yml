@@ -1,0 +1,5 @@
+---
+# docker.yml
+- hosts: docker_image
+  roles:
+    - docker

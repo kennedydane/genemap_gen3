@@ -1,0 +1,21 @@
+# Packer Variables
+
+admin_user = "ubuntu"
+base_image_name = "gen3.elwazi.ubuntu.20_04.base"
+//base_image_source = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+base_image_source = "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img"
+base_image_source_format = "qcow2"
+build_image_flavour = "ilifu-A"
+database_image_name = "gen3.elwazi.ubuntu.20_04.database"
+docker_image_name = "gen3.elwazi.ubuntu.20_04.docker"
+floating_ip_network_id = "f99ab9af-902c-494b-abfc-32ccd5716234"
+network_ids = ["b6f4dd55-7097-4b7d-a998-0a1d6c101c29"]
+security_groups = ["07940fba-2a99-42e4-851b-8f226144c9bd"]
+
+# Terraform variables
+
+database_node_flavour = "ilifu-B"
+docker_node_flavour = "ilifu-B"
+name_prefix = "gen3-elwazi"
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDY2pS7TXi2csK46NPff6Nyz8v0jGcXW/zTGMTI/WymnhzBnaqSdMCrsl2WcbtQ5igu1+O8FOgZb6Mp3cX06Kxia5SlE9q5qRmQlQknKFn+9OEezrEUKTGJb9yAG+rBu5NJ46A9KD+c/vg47VO0wiWT1DyqJ+ih/9QFOTyKAh+Lt9yyXvnkJmRi1EW1esGEuczYJd1HJvamKojl7YUlcPaSwkNfSUg1hmQbqrAzSlW2MD4UsONGIWsyur+xg0/BeiqjMJgCoWcHKoxVxpiraYEhZxBj9oRqIxZNtDex/0oJ4JKojO3JiO9Gb8dUnYnUjzWbZUFfgr4n6QdSMycg5oun41MtFdofVOD8ug8HyjDNYh3D4Z0xXzakHVIRJAxkr+Moyq2WTyhOXhMJfGRtk68+lw5gUWUTBYCj3Qv3pKa5PjMbV3dFKYy2882481D26yuTJrBmtSalVFASHeGY/kbuNT78QcX/HHUx7m1rJQbM7PplzEaPDanHnEAqNe667MsSgw0XuFQA3hTFsaFydDguTZj74dL0b6SnWx7AyKuwPK/RzkhPYCckxT4/wssxQ667/oqI4j/v4i9D32AfgEZMjZzgH/Ki0CGHyFNW5MxRCcRXPvMJQ2OwWyzHh4UFYkOKtfXyoOFlfZP9qcBzQzwqM7kdXO+av2KcelTJmwGNkw== dane@dane-ideapas-110s"
+
