@@ -45,6 +45,22 @@ Edit the contents in order to both personalise your gen3 instance and ensure tha
 Packer and Terraform will use the correct values for your OpenStack, e.g. you will almost
 certainly need to change the values of: `build_image_flavour`, `database_node_flavour` and
 `docker_node_flavour` so that appropriate OpenStack Virtual Machine flavours are used.
+The variables to be set are:
+* *admin_user*: Login name for admin user
+* *base_image_name*: Name to use for Base image
+* *base_image_source*: Source URL for base image
+* *base_image_source_format*: Image format of base image (qcow2 / raw / …)
+* *build_image_flavour*: Virtual Image Flavour to be used when building images
+* *database_image_name*: Name to give the database image
+* *docker_image_name*: Name to give the docker image
+* *floating_ip_network_id*: The name of the Floating IP network in your OpenStack
+* *network_ids*: Name of networks to be used when building images
+* *security_groups*: Security groups to be used (this should include an incoming ssh rule…)
+* *database_node_flavour*: OpenStack VM flavour to use for the database node
+* *docker_node_flavour*: OpenStack VM flavour to use for the docker node
+* *name_prefix*: Name used in terraform infrastructure
+* *ssh_public_key*: Your ssh public key
+
 
 ### Ansible
 Ansible requires some of its own variables and these can be created by setting up the
