@@ -61,6 +61,7 @@ build {
     ansible_env_vars = [
       "ANSIBLE_SSH_ARGS='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o AddKeysToAgent=no -o IdentitiesOnly=yes'"
     ]
+    extra_arguments = ["--tags", "build"]
 //    extra_arguments = ["-vvv"]
     user = "${var.admin_user}"
     groups = [
