@@ -39,3 +39,13 @@
         regex: "host *all *all *{{ gen3_subnet }} *md5"
         line: "host    all             all             {{ gen3_subnet }}         md5"
       notify: Restart postgres
+
+    - name: Create databases
+      become: yes
+      become_user: postgres
+      community.postgresql.postgresql_db:
+        name: "{{ item }}"
+      loop:
+        - metadata_db
+        - fence_db
+        - indexd_db
