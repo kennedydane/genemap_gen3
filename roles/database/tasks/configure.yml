@@ -11,8 +11,11 @@
       apt:
         name:
           - acl
-          - python3-psycopg2
+          - default-jre
           - libpq-dev
+          - postgresql
+          - postgresql-contrib
+          - python3-psycopg2
         state: latest
 
     - name: Get postgres version information

@@ -16,9 +16,12 @@
     - name: Install required packages
       apt:
         name:
+          - acl
+          - default-jre
+          - libpq-dev
           - postgresql
           - postgresql-contrib
-          - default-jre
+          - python3-psycopg2
         update-cache: yes
 
     - name: Add elasticsearch repo key
