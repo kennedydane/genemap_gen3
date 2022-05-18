@@ -24,6 +24,7 @@
       tags: build
       apt:
         name:
+          - fail2ban
           - tmux
 
     - name: Clean up packages
