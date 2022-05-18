@@ -31,9 +31,19 @@ variable "database_image_name" {
   description = "Name to give the database image"
 }
 
+variable "database_node_name" {
+  type = string
+  description = "Database node's hostname"
+}
+
 variable "docker_image_name" {
   type = string
   description = "Name to give the docker image"
+}
+
+variable "docker_node_name" {
+  type = string
+  description = "Docker node's hostname"
 }
 
 variable "floating_ip_network_id" {
