@@ -1,0 +1,13 @@
+---
+# tasks file for configuring the docker host
+
+- name: clone gen3 commons docker compose-services
+  git:
+    repo: https://github.com/uc-cdis/compose-services.git
+    dest: ~/compose-services
+    update: yes
+
+- name: Run creds_setup.sh
+  command: ./creds_setup.sh "{{ ansible_default_ipv4.address }}"
+  args:
+    chdir: ~/compose-services
