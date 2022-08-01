@@ -1,24 +1,5 @@
 version: '3'
 services:
-  postgres:
-    image: postgres:9.6
-    container_name: postgres
-    networks:
-      - devnet
-    volumes:
-      - psqldata:/var/lib/postgresql/data
-      - ./scripts/postgres_init.sql:/docker-entrypoint-initdb.d/postgres_init.sql:ro
-      - ./scripts/postgres_always.sh:/postgres_always.sh:ro
-      - ./scripts/postgres_run.sh:/usr/local/bin/postgres_run.sh:ro
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "psql -U fence_user -d fence_db -c 'SELECT 1;'"]
-      interval: 60s
-      timeout: 5s
-      retries: 3
-    command: postgres_run.sh
-    environment:
-      - POSTGRES_PASSWORD=postgres
   indexd-service:
     image: "quay.io/cdis/indexd:2021.03"
     command: bash indexd_setup.sh
@@ -35,8 +16,6 @@ services:
       interval: 60s
       timeout: 5s
       retries: 3
-    depends_on:
-      - postgres
   fence-service:
     image: "quay.io/cdis/fence:2021.03"
     command: bash /var/www/fence/fence_setup.sh
@@ -58,7 +37,6 @@ services:
       - PYTHONPATH=/var/www/fence
       - GEN3_DEBUG=True
     depends_on:
-      - postgres
       - arborist-service
   arborist-service:
     image: "quay.io/cdis/arborist:2021.03"
@@ -81,13 +59,9 @@ services:
       interval: 60s
       timeout: 5s
       retries: 10
-    depends_on:
-      - postgres
   metadata-service:
     image: "quay.io/cdis/metadata-service:2021.03"
     container_name: metadata-service
-    depends_on:
-      - postgres
     environment:
       - DB_HOST=postgres
       - DB_USER=metadata_user
@@ -120,7 +94,6 @@ services:
       # give peregrine some extra time to startup
       retries: 10
     depends_on:
-      - postgres
       - sheepdog-service
   sheepdog-service:
     image: "quay.io/cdis/sheepdog:2021.03"
@@ -140,8 +113,6 @@ services:
       interval: 60s
       timeout: 5s
       retries: 5
-    depends_on:
-      - postgres
   guppy-service:
     image: "quay.io/cdis/guppy:2021.03"
     container_name: guppy-service
@@ -229,7 +200,6 @@ services:
       timeout: 5s
       retries: 10
     depends_on:
-      - postgres
       - peregrine-service
       - sheepdog-service
   jupyter-service:
@@ -288,7 +258,6 @@ services:
       - ./Secrets/user.yaml:/usr/share/gen3/tube/user.yaml
       - ./datadictionary:/tmp/datadictionary
     depends_on:
-      - postgres
       - esproxy-service
       - spark-service
   spark-service:
