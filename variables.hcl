@@ -4,6 +4,7 @@
 variable "admin_user" {
   type = string
   description = "Login name for admin user"
+  default = "ubuntu"
 }
 
 variable "base_image_name" {
@@ -61,7 +62,7 @@ variable "security_groups" {
   description = "Security groups to be used (this should include an incoming ssh rule…)"
 }
 
-# Terraform Variables
+// Terraform Variables
 
 variable "database_node_flavour" {
   type = string
@@ -86,4 +87,78 @@ variable "name_prefix" {
 variable "ssh_public_key" {
   type = string
   description = "Your ssh public key"
+}
+
+// variables used in ansible configuration
+
+variable "postgres_user" {
+  type = string
+  description = "Main postgres username"
+  default = "postgres"
+}
+
+variable "postgres_password" {
+  type = string
+  description = "Main postgres user password"
+  sensitive = true
+}
+
+variable "postgres_fence_user" {
+  type = string
+  description = "fence user postgres username"
+  default = "fence_user"
+}
+
+variable "postgres_fence_password" {
+  type = string
+  description = "fence user postgres password"
+  sensitive = true
+}
+
+variable "postgres_peregrine_user" {
+  type = string
+  description = "peregrine user postgres username"
+  default = "peregrine_user"
+}
+
+variable "postgres_peregrine_password" {
+  type = string
+  description = "peregrine user postgres password"
+  sensitive = true
+}
+
+variable "postgres_sheepdog_user" {
+  type = string
+  description = "sheepdog user postgres username"
+  default = "sheepdog_user"
+}
+
+variable "postgres_sheepdog_password" {
+  type = string
+  description = "sheepdog user postgres password"
+  sensitive = true
+}
+
+variable "postgres_indexd_user" {
+  type = string
+  description = "indexd user postgres username"
+  default = "indexd_user"
+}
+
+variable "postgres_indexd_password" {
+  type = string
+  description = "indexd user postgres password"
+  sensitive = true
+}
+
+variable "postgres_arborist_user" {
+  type = string
+  description = "arborist user postgres username"
+  default = "arborist_user"
+}
+
+variable "postgres_arborist_password" {
+  type = string
+  description = "arborist user postgres password"
+  sensitive = true
 }

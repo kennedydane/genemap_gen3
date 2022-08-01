@@ -17,6 +17,7 @@ installed by setting up the appropriate repositories and installing using your O
 package manager. The python virtual environment is ideally set up using pipenv by
 running the `pipenv sync` command. Alternatively ensure you have a python virtual
 environment with both the `python-openstackclient` and `ansible` packages installed.
+Remember to activate your virtual environment (with `pipenv shell` or `. ./.venv/bin/activate`).
 
 ### Initialising packer
 It is important to run `packer init images.openstack.pkr.hcl` once in your environment. This
@@ -61,6 +62,19 @@ The variables to be set are:
 * `floating_ip_pool_name`: OpenStack Floating IP address pool name
 * `name_prefix`: Name used in terraform infrastructure
 * `ssh_public_key`: Your ssh public key
+* `postgres_user`: Main postgres username
+* `postgres_password`: Main postgres user password
+* `postgres_fence_user`: fence user postgres username
+* `postgres_fence_password`: fence user postgres password
+* `postgres_peregrine_user`: peregrine user postgres username
+* `postgres_peregrine_password`: peregrine user postgres password
+* `postgres_sheepdog_user`: sheepdog user postgres username
+* `postgres_sheepdog_password`: sheepdog user postgres password
+* `postgres_indexd_user`: indexd user postgres username
+* `postgres_indexd_password`: indexd user postgres password
+* `postgres_arborist_user`: arborist user postgres username
+* `postgres_arborist_password`: arborist user postgres password
+
 
 
 ### Ansible
@@ -88,7 +102,11 @@ the security groups; the docker node; the database node. This will also create a
 `inventory` file which can be used with ansible.
 
 ## Infrastructure Configuration
-Finally the infrastructure can be configured using ansible. This can be done by running:
-`ansible-playbook -i inventory site.yml`.
+Finally the infrastructure can be configured using ansible. The `inventory` file generated
+in the previous should be updated — specifically the passwords should be updated – these can
+easily be found by searching for the `TODO:CONFIGURE_ME` text.
+
+Then the playbook should be run with the command: `ansible-playbook -i inventory site.yml`.
+This will connect to the nodes and finalise the configuration of services on the nodes.
 
 

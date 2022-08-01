@@ -3,3 +3,8 @@
 - hosts: docker_image
   roles:
     - docker
+
+- hosts: docker_nodes
+  roles:
+    - common
+    - docker

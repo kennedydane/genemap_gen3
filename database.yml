@@ -4,6 +4,7 @@
   roles:
     - database
 
-- hosts: database
+- hosts: database_nodes
   roles:
+    - common
     - database

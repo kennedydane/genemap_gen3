@@ -1,0 +1,13 @@
+---
+# tasks file for common
+
+- name: "Build hosts file"
+  tags: hosts
+  become: yes
+  lineinfile:
+    path: /etc/hosts
+    regexp: '.*{{ item }}$'
+    line: "{{ hostvars[item].private_ip }} {{ item }}"
+    state: present
+  when: hostvars[item].private_ip is defined
+  with_items: "{{ groups['all'] }}"

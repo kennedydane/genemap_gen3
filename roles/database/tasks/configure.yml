@@ -52,3 +52,50 @@
         - metadata_db
         - fence_db
         - indexd_db
+
+    - name: Create users
+      become: yes
+      become_user: postgres
+      community.postgresql.postgresql_user:
+        name: "{{ item.user }}"
+        password: "{{ item.password }}"
+        role_attr_flags: "SUPERUSER"
+      loop:
+        - {
+            user: "{{ postgres_user }}",
+            password: "{{ postgres_password }}"
+          }
+        - {
+            user: "{{ postgres_fence_user }}",
+            password: "{{ postgres_fence_password }}"
+        }
+        - {
+            user: "{{ postgres_indexd_user }}",
+            password: "{{ postgres_indexd_password }}"
+        }
+        - {
+            user: "{{ postgres_peregrine_user }}",
+            password: "{{ postgres_peregrine_password }}"
+        }
+        - {
+            user: "{{ postgres_sheepdog_user }}",
+            password: "{{ postgres_sheepdog_password }}"
+
+        }
+        - {
+            user: "{{ postgres_arborist_user }}",
+            password: "{{ postgres_arborist_password }}"
+        }
+
+- name: Update elasticsearch
+  tags:
+    - elasticsearch
+  block:
+    - name: Edit elasticsearch host key
+      lineinfile:
+        path: "/etc/elasticsearch/elasticsearch.yml"
+        regex: "^network.host:.*"
+        line: "network.host: {{ ansible_default_ipv4.address }}"
+        insertafter: "^#network.host:.*"
+      become: yes
+      notify: Restart elasticsearch
