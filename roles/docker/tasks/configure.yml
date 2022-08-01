@@ -5,9 +5,14 @@
   git:
     repo: https://github.com/uc-cdis/compose-services.git
     dest: ~/compose-services
-    update: yes
+    update: no
 
 - name: Run creds_setup.sh
   command: ./creds_setup.sh "{{ ansible_default_ipv4.address }}"
   args:
     chdir: ~/compose-services
+
+- name: Copy docker-compose.yml to host
+  template:
+    src: docker-compose.yml.j2
+    dest: ~/compose-services/docker-compose.yml
