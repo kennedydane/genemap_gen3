@@ -29,6 +29,22 @@ resource "openstack_networking_router_interface_v2" "gen3_router_interface" {
   subnet_id = openstack_networking_subnet_v2.gen3_subnet.id
 }
 
+
+resource "openstack_networking_secgroup_v2" "gen3_postgres" {
+  name        = "${var.name_prefix}-postgres"
+  description = "For postgres access"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "postgres" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 5432
+  port_range_max    = 5432
+  remote_ip_prefix  = "192.168.10.0/24"
+  security_group_id = openstack_networking_secgroup_v2.gen3_postgres.id
+}
+
 resource "openstack_networking_secgroup_v2" "gen3_web" {
   name        = "${var.name_prefix}-web"
   description = "To access the gen3 web services"
@@ -69,6 +85,10 @@ resource "openstack_networking_secgroup_rule_v2" "ssh" {
   security_group_id = openstack_networking_secgroup_v2.gen3_ssh.id
 }
 
-resource "openstack_networking_floatingip_v2" "database_float_ip" {
+#resource "openstack_networking_floatingip_v2" "database_float_ip" {
+#  pool = "${var.floating_ip_pool_name}"
+#}
+
+resource "openstack_networking_floatingip_v2" "docker_float_ip" {
   pool = "${var.floating_ip_pool_name}"
 }
