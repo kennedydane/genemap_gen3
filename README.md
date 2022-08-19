@@ -33,7 +33,7 @@ In otherwords once you have the `*-openrc.sh` file you will need to run
 your OpenStack login details at the time of sourcing.
 
 ## Setting up variables
-There are only two files that should need configuring for this installation and these are
+There are only two files that should need configuring for this installation and these
 contain the variables that Packer/Terraform and Ansible use.
 
 ### Packer and Terraform

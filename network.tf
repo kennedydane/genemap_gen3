@@ -85,10 +85,6 @@ resource "openstack_networking_secgroup_rule_v2" "ssh" {
   security_group_id = openstack_networking_secgroup_v2.gen3_ssh.id
 }
 
-#resource "openstack_networking_floatingip_v2" "database_float_ip" {
-#  pool = "${var.floating_ip_pool_name}"
-#}
-
 resource "openstack_networking_floatingip_v2" "docker_float_ip" {
   pool = "${var.floating_ip_pool_name}"
 }
