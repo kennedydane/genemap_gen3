@@ -5,3 +5,4 @@ terraform.tfstate*
 variables.auto.hcl
 inventory
 inventory.ini
+variables.auto.hcl
