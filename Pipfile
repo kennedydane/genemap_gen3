@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 python-openstackclient = "*"
 ansible = "*"
+s3cmd = "*"
+s3fs = "*"
 
 [dev-packages]
-
-
