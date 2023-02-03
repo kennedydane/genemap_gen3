@@ -2,7 +2,6 @@
 
 admin_user = "ubuntu"
 base_image_name = "base.gen3.elwazi.ubuntu.20_04"
-//base_image_source = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
 base_image_source = "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img"
 base_image_source_format = "qcow2"
 build_image_flavour = "ilifu-A"
@@ -23,6 +22,11 @@ database_node_flavour = "ilifu-C"
 database_node_name = "postgres"
 docker_node_flavour = "ilifu-D"
 docker_node_name = "docker"
+
+k8s_master_flavour = "ilifu-B"
+k8s_master_name = "k8s-master"
+k8s_node_flavour = "ilifu-F"
+k8s_node_name = "k8s-node"
 
 
 name_prefix = "gen3-elwazi"
