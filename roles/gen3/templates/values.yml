@@ -1,0 +1,79 @@
+global:
+#  environment: devplanetv1
+#  aws:
+#    enabled: true
+  hostname: {{ gen3.hostname }}
+#  revproxyArn: arn:aws:acm:us-east-1:707767160287:certificate/520ede2f-fc82-4bb9-af96-4b4af7deabbd
+  postgres:
+    db_create: true
+    master:
+      host: postgres
+      username: {{ postgres_user }}
+      password: {{ postgres_password }}
+      port: 5432
+fence:
+  FENCE_CONFIG:
+    OPENID_CONNECT:
+      google:
+        client_id: "{{ google_client_id }}"
+        client_secret: "{{ google_client_secret }}"
+
+
+secrets:
+  awsAccessKeyId: "{{ aws_access_key_id }}"
+  awsSecretAccessKey: "{{ aws_secret_access_key }}"
+
+{# hatchery:
+  image:
+    tag: feat_localdev
+  hatchery:
+    containers:
+    - target-port: 8888
+      cpu-limit: '0.5'
+      memory-limit: 1Gi
+      name: "(Tutorials) Example Analysis Jupyter Lab Notebooks"
+      image: quay.io/cdis/heal-notebooks:combined_tutorials__latest
+      env:
+        FRAME_ANCESTORS: https://{{ .Values.global.hostname }}
+      args:
+      - "--NotebookApp.base_url=/lw-workspace/proxy/"
+      - "--NotebookApp.default_url=/lab"
+      - "--NotebookApp.password=''"
+      - "--NotebookApp.token=''"
+      - "--NotebookApp.shutdown_no_activity_timeout=5400"
+      - "--NotebookApp.quit_button=False"
+      command:
+      - start-notebook.sh
+      path-rewrite: "/lw-workspace/proxy/"
+      use-tls: 'false'
+      ready-probe: "/lw-workspace/proxy/"
+      lifecycle-post-start:
+      - "/bin/sh"
+      - "-c"
+      - export IAM=`whoami`; rm -rf /home/$IAM/pd/dockerHome; rm -rf /home/$IAM/pd/lost+found;
+        ln -s /data /home/$IAM/pd/; true
+      user-uid: 1000
+      fs-gid: 100
+      user-volume-location: "/home/jovyan/pd"
+      gen3-volume-location: "/home/jovyan/.gen3"
+#}
+
+portal:
+  image:
+    tag: dev
+
+guppy:
+  enabled: true
+  db_restore: true
+
+indexd:
+  enabled: true
+  db_restore: true
+
+metadata:
+  enabled: true
+  db_restore: true
+
+sheepdog:
+  enabled: true
+  db_restore: true

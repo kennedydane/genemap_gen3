@@ -37,14 +37,29 @@ variable "database_node_name" {
   description = "Database node's hostname"
 }
 
-variable "docker_image_name" {
+#variable "database_image_flavour" {
+#  type = string
+#  description = "Virtual Image Flavour to be used when building images"
+#}
+
+variable "k8s_image_name" {
   type = string
-  description = "Name to give the docker image"
+  description = "Name to give the k8s image"
 }
 
-variable "docker_node_name" {
+variable "k8s_control_plane_node_name" {
   type = string
-  description = "Docker node's hostname"
+  description = "k8s control plane's node's hostname"
+}
+
+variable "k8s_node_name" {
+  type = string
+  description = "k8s node's base hostname"
+}
+
+variable "k8s_node_count" {
+  type = number
+  description = "Number of k8s nodes to create"
 }
 
 variable "floating_ip_network_id" {
@@ -62,6 +77,11 @@ variable "security_groups" {
   description = "Security groups to be used (this should include an incoming ssh rule…)"
 }
 
+variable "timezone" {
+  type = string
+  description = "Timezone to be used in machines"
+}
+
 // Terraform Variables
 
 variable "database_node_flavour" {
@@ -69,9 +89,19 @@ variable "database_node_flavour" {
   description = "OpenStack VM flavour to use for the database node"
 }
 
-variable "docker_node_flavour" {
+variable "gen3_hostname" {
   type = string
-  description = "OpenStack VM flavour to use for the docker node"
+  description = "Hostname for the gen3 deployment"
+}
+
+variable "k8s_control_plane_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the k8s control plane"
+}
+
+variable "k8s_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the k8s nodes"
 }
 
 variable "floating_ip_pool_name" {
@@ -90,6 +120,28 @@ variable "ssh_public_key" {
 }
 
 // variables used in ansible configuration
+
+variable "google_client_id" {
+  type        = string
+  description = "Google client id"
+}
+
+variable "google_client_secret" {
+  type        = string
+  description = "Google client secret"
+  sensitive   = true
+}
+
+variable "awsAccessKeyId" {
+  type        = string
+  description = "AWS access key id"
+}
+
+variable "awsSecretAccessKey" {
+  type        = string
+  description = "AWS secret access key"
+  sensitive   = true
+}
 
 variable "postgres_user" {
   type = string

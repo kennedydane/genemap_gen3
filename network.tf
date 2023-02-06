@@ -30,20 +30,20 @@ resource "openstack_networking_router_interface_v2" "gen3_router_interface" {
 }
 
 
-resource "openstack_networking_secgroup_v2" "gen3_postgres" {
-  name        = "${var.name_prefix}-postgres"
-  description = "For postgres access"
-}
-
-resource "openstack_networking_secgroup_rule_v2" "postgres" {
-  direction         = "ingress"
-  ethertype         = "IPv4"
-  protocol          = "tcp"
-  port_range_min    = 5432
-  port_range_max    = 5432
-  remote_ip_prefix  = "192.168.10.0/24"
-  security_group_id = openstack_networking_secgroup_v2.gen3_postgres.id
-}
+#resource "openstack_networking_secgroup_v2" "gen3_postgres" {
+#  name        = "${var.name_prefix}-postgres"
+#  description = "For postgres access"
+#}
+#
+#resource "openstack_networking_secgroup_rule_v2" "postgres" {
+#  direction         = "ingress"
+#  ethertype         = "IPv4"
+#  protocol          = "tcp"
+#  port_range_min    = 5432
+#  port_range_max    = 5432
+#  remote_ip_prefix  = "192.168.10.0/24"
+#  security_group_id = openstack_networking_secgroup_v2.gen3_postgres.id
+#}
 
 resource "openstack_networking_secgroup_v2" "gen3_web" {
   name        = "${var.name_prefix}-web"
@@ -85,6 +85,66 @@ resource "openstack_networking_secgroup_rule_v2" "ssh" {
   security_group_id = openstack_networking_secgroup_v2.gen3_ssh.id
 }
 
-resource "openstack_networking_floatingip_v2" "docker_float_ip" {
+resource "openstack_networking_secgroup_v2" "gen3_kubernetes" {
+  name        = "${var.name_prefix}-kubernetes"
+  description = "To access gen3 kubernetes nodes ssh and api"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "internal_ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "192.168.10.0/24"
+  security_group_id = openstack_networking_secgroup_v2.gen3_kubernetes.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "kubernetes_api" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 6443
+  port_range_max    = 6443
+  remote_ip_prefix  = "192.168.10.0/24"
+  security_group_id = openstack_networking_secgroup_v2.gen3_kubernetes.id
+}
+
+resource "openstack_networking_secgroup_v2" "gen3_postgres" {
+  name        = "${var.name_prefix}-postgres"
+  description = "To access database ssh and postgres port"
+}
+
+resource "openstack_networking_secgroup_rule_v2" "pg_ssh" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = "192.168.10.0/24"
+  security_group_id = openstack_networking_secgroup_v2.gen3_postgres.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "postgres" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 5432
+  port_range_max    = 5432
+  remote_ip_prefix  = "192.168.10.0/24"
+  security_group_id = openstack_networking_secgroup_v2.gen3_postgres.id
+}
+
+resource "openstack_networking_secgroup_rule_v2" "elasticsearch" {
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 9200
+  port_range_max    = 9300
+  remote_ip_prefix  = "192.168.10.0/24"
+  security_group_id = openstack_networking_secgroup_v2.gen3_postgres.id
+}
+
+resource "openstack_networking_floatingip_v2" "k8s_float_ip" {
   pool = "${var.floating_ip_pool_name}"
 }
