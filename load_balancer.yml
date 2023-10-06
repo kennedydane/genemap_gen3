@@ -1,0 +1,12 @@
+---
+# database.yml
+- hosts: load_balancer_image
+  roles:
+    - load_balancer
+
+- name: Gather facts from rke2 worker nodes
+  hosts: rancher_rke2_worker_nodes
+
+- hosts: load_balancer_nodes
+  roles:
+    - load_balancer

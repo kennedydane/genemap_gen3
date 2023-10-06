@@ -1,0 +1,41 @@
+---
+# tasks file for load_balancer
+- { import_tasks: build.yml, tags: [never,build], become: yes }
+
+- name: Configure nginx for load balancing
+  tags: [nginx]
+  become: yes
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/conf.d/gen3.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx
+
+- name: Run certbot to get certs "certbot certonly --nginx -n -d "{{ gen3.hostname }}" --agree-tos --email "{{ gen3.admin_email }}""
+  tags: [certbot]
+  become: yes
+  shell: certbot --nginx -n -d "{{ gen3.hostname }}" --agree-tos --email "{{ gen3.admin_email }}"
+  notify: restart nginx
+
+- name: Configure .ssh
+  tags: [ssh]
+  become: no
+  copy:
+    dest: ~/.ssh/config
+    content: |
+      Host *
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
+        LogLevel=ERROR
+
+- name: Configure tmux
+  tags: [tmux]
+  become: no
+  copy:
+    dest: ~/.tmux.conf
+    content: |
+      set -g prefix C-a
+      set -g default-terminal "screen-256color"
+

@@ -7,9 +7,14 @@ variable "admin_user" {
   default = "ubuntu"
 }
 
-variable "base_image_name" {
+#variable "base_image_name" {
+#  type = string
+#  description = "Name to use for Base image"
+#}
+
+variable "image_suffix" {
   type = string
-  description = "Name to use for Base image"
+  description = "Suffix to be appended to the end of image names"
 }
 
 variable "base_image_source" {
@@ -25,42 +30,54 @@ variable "base_image_source_format" {
 variable "build_image_flavour" {
   type = string
   description = "Virtual Image Flavour to be used when building images"
+  default = "ilifu-B"
 }
 
-variable "database_image_name" {
-  type = string
-  description = "Name to give the database image"
-}
-
-variable "database_node_name" {
-  type = string
-  description = "Database node's hostname"
-}
-
-#variable "database_image_flavour" {
+#variable "database_image_name" {
 #  type = string
-#  description = "Virtual Image Flavour to be used when building images"
+#  description = "Name to give the database image"
 #}
 
-variable "k8s_image_name" {
-  type = string
-  description = "Name to give the k8s image"
-}
+#variable "database_node_name" {
+#  type = string
+#  description = "Database node's hostname"
+#}
 
-variable "k8s_control_plane_node_name" {
-  type = string
-  description = "k8s control plane's node's hostname"
-}
+#variable "load_balancer_image_name" {
+#  type = string
+#  description = "Name to give the load balancer image"
+#}
 
-variable "k8s_node_name" {
-  type = string
-  description = "k8s node's base hostname"
-}
+#variable "load_balancer_node_name" {
+#  type = string
+#  description = "Load balancer's hostname"
+#}
 
-variable "k8s_node_count" {
+#variable "rancher_rke2_server_image_name" {
+#  type = string
+#  description = "Name to give the rke2 server image"
+#}
+#
+#variable "rancher_rke2_worker_image_name" {
+#  type = string
+#  description = "Name to give the rke2 worker image"
+#}
+#
+#variable "rancher_rke2_worker_node_name" {
+#  type = string
+#  description = "rke2 worker node's base hostname"
+#}
+
+variable "rancher_rke2_worker_node_count" {
   type = number
-  description = "Number of k8s nodes to create"
+  description = "Number of rke2 worker nodes to create"
+  default = 2
 }
+
+#variable "rancher_hostname" {
+#  type = string
+#  description = "name of rancher host"
+#}
 
 variable "floating_ip_network_id" {
   description = "The name of the Floating IP network in your OpenStack"
@@ -82,11 +99,28 @@ variable "timezone" {
   description = "Timezone to be used in machines"
 }
 
+#variable "rancher_rke2_version" {
+#  type = string
+#  description = "Rancher RKE version to use"
+#}
+
 // Terraform Variables
+
+variable "node_suffix" {
+  type        = string
+  description = "Suffix to be appended to the end of node names"
+}
 
 variable "database_node_flavour" {
   type = string
   description = "OpenStack VM flavour to use for the database node"
+  default = "ilifu-B"
+}
+
+variable "database_node_disk_size_gib" {
+  type = number
+  description = "Disk size in GiB for the database node"
+  default = "40"
 }
 
 variable "gen3_hostname" {
@@ -94,14 +128,55 @@ variable "gen3_hostname" {
   description = "Hostname for the gen3 deployment"
 }
 
-variable "k8s_control_plane_node_flavour" {
+variable "gen3_user" {
   type = string
-  description = "OpenStack VM flavour to use for the k8s control plane"
+  description = "Login name for gen3 user"
 }
 
-variable "k8s_node_flavour" {
+variable "gen3_admin_email" {
   type = string
-  description = "OpenStack VM flavour to use for the k8s nodes"
+  description = "Email address for gen3 admin user"
+}
+
+variable "rancher_rke2_server_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the rke2 server nodes"
+  default = "ilifu-B"
+}
+
+variable "rancher_rke2_worker_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the rke2 worker nodes"
+  default = "ilifu-E"
+}
+
+variable "rancher_rke2_worker_node_disk_size_gib" {
+  type = number
+  description = "Disk size in GiB for the rke2 worker nodes"
+  default = "160"
+}
+
+variable "rancher_rke2_server_node_disk_size_gib" {
+  type = number
+  description = "Disk size in GiB for the rke2 server nodes"
+  default = "80"
+}
+
+variable "load_balancer_node_flavour" {
+  type = string
+  description = "OpenStack VM flavour to use for the database node"
+  default = "ilifu-B"
+}
+
+#variable "rancher_rke2_server_node_name" {
+#  type = string
+#  description = "Rancher management node's hostname"
+#}
+
+variable "rancher_rke2_server_node_count" {
+  type = number
+  description = "Number of rancher management nodes to create"
+  default = 3
 }
 
 variable "floating_ip_pool_name" {

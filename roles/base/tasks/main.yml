@@ -2,7 +2,7 @@
 # tasks file for base
 - name: Initialise base image
   become: yes
-  tags: build, never
+  tags: [build, never]
   block:
     - name: Update timezone
       file:
@@ -13,7 +13,7 @@
 
     - name: Upgrade all existing packages
       apt:
-        upgrade: dist
+        upgrade: full
         update-cache: yes
       register: apt_res
       retries: 3
@@ -23,7 +23,9 @@
     - name: Install commonly used packages
       tags: build
       apt:
+        update_cache: true
         name:
+          - acl
           - apt-transport-https
           - ca-certificates
           - curl

@@ -2,12 +2,14 @@
 Repository for keeping track of eLwazi private openstack gen3 infrastructure and
 documentation.
 
+[Installing gen3 on existing machines](#setting-up-the-infrastructure-on-existing-machines-using-ansible)
+
 # Setting up the infrastructure on OpenStack using Packer, Terraform and Ansible
 The infrastructure is managed with a set of scripts that make use of
 [Packer](https://www.packer.io/) (for creating the OpenStack virtual machine images
 that are used), [Terraform](https://www.terraform.io/) (for deploying  infrastructure
 on OpenStack), and finally [Ansible](https://www.ansible.com/) for configuring the
-infrastructure.
+infrastructure — largely using the [gen3 helm charts](https://github.com/uc-cdis/gen3-helm).
 
 ## Installing software requirements on your machine
 You will need to install [Packer](https://learn.hashicorp.com/tutorials/packer/get-started-install-cli)
@@ -53,15 +55,26 @@ The variables to be set are:
 * `base_image_source_format`: Image format of base image (qcow2 / raw / …)
 * `build_image_flavour`: Virtual Image Flavour to be used when building images
 * `database_image_name`: Name to give the database image
-* `docker_image_name`: Name to give the docker image
+* `database_node_name`: Database node's hostname
+* `k8s_image_name`: Name to give the k8s image
+* `k8s_control_plane_node_name`: k8s control plane's node's hostname
+* `k8s_node_name`: k8s node's base hostname
+* `k8s_node_count`: Number of k8s nodes to create
 * `floating_ip_network_id`: The name of the Floating IP network in your OpenStack
 * `network_ids`: Name of networks to be used when building images
 * `security_groups`: Security groups to be used (this should include an incoming ssh rule…)
+* `timezone`: Timezone to be used in machines
 * `database_node_flavour`: OpenStack VM flavour to use for the database node
-* `docker_node_flavour`: OpenStack VM flavour to use for the docker node
+* `gen3_hostname`: Hostname for the gen3 deployment
+* `k8s_control_plane_node_flavour`: OpenStack VM flavour to use for the k8s control plane
+* `k8s_node_flavour`: OpenStack VM flavour to use for the k8s nodes
 * `floating_ip_pool_name`: OpenStack Floating IP address pool name
 * `name_prefix`: Name used in terraform infrastructure
 * `ssh_public_key`: Your ssh public key
+* `google_client_id`: Google client id
+* `google_client_secret`: Google client secret
+* `awsAccessKeyId`: AWS access key id
+* `awsSecretAccessKey`: AWS secret access key
 * `postgres_user`: Main postgres username
 * `postgres_password`: Main postgres user password
 * `postgres_fence_user`: fence user postgres username
@@ -74,8 +87,6 @@ The variables to be set are:
 * `postgres_indexd_password`: indexd user postgres password
 * `postgres_arborist_user`: arborist user postgres username
 * `postgres_arborist_password`: arborist user postgres password
-
-
 
 ### Ansible
 Ansible requires some of its own variables and these can be created by setting up the
@@ -99,14 +110,25 @@ The machines are first deployed with terraform. Firstly the environment must be
 initialised with `terraform init`. Afterwards `terraform plan` and `terraform apply`
 can be used to actually create the infrastructure including: the network and subnetwork;
 the security groups; the docker node; the database node. This will also create an
-`inventory` file which can be used with ansible.
+`inventory.ini` file which can be used with ansible.
 
 ## Infrastructure Configuration
-Finally the infrastructure can be configured using ansible. The `inventory` file generated
+Finally the infrastructure can be configured using ansible. The `inventory.ini` file generated
 in the previous should be updated — specifically the passwords should be updated – these can
 easily be found by searching for the `TODO:CONFIGURE_ME` text.
 
 Then the playbook should be run with the command: `ansible-playbook -i inventory site.yml`.
 This will connect to the nodes and finalise the configuration of services on the nodes.
 
+# Setting up the infrastructure on existing machines using Ansible
+The first method which starts off using packer and terraform is useful if you have access
+to OpenStack cloud infrastructure, however if you simply have access to some Ubuntu machines
+(or virtual machines) then you can use the ansible scripts to install the infrastucture. The
+main difficulty is configuring the inventory and variables files so that the ansible scripts
+know what to do where.
 
+## Setting up your inventory
+
+## Setting up your variables
+
+## Running the ansible scripts
