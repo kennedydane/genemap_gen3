@@ -1,9 +1,10 @@
 [packages]
 django = "*"
 gen3users = "*"
-psycopg2 = "*"
 gunicorn = "*"
 pyyaml = "*"
+psycopg = {extras = ["binary"], version = "*"}
+django-extensions = "*"
 
 [dev-packages]
 django-debug-toolbar = "*"
