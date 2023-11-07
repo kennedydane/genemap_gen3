@@ -353,18 +353,3 @@
     policies:
     - - all_programs_reader
     - - open_data_reader
-- model: users.gen3group
-  fields:
-    policies:
-    - - data_upload
-    - - eLwaziProject_submitter
-    - - services.sheepdog-admin
-    users:
-    - - bundeaoo@gmail.com
-    - - dane@idia.ac.za
-- model: users.gen3group
-  fields:
-    policies:
-    - - indexd_admin
-    users:
-    - - dane@idia.ac.za
