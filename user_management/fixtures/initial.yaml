@@ -1,1615 +1,370 @@
-- model: admin.logentry
-  pk: 1
-  fields:
-    action_time: 2023-11-07 06:55:59.880483+00:00
-    user: 1
-    content_type: 8
-    object_id: '1'
-    object_repr: /workspace
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 2
-  fields:
-    action_time: 2023-11-07 06:56:12.765403+00:00
-    user: 1
-    content_type: 8
-    object_id: '2'
-    object_repr: /data_file
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 3
-  fields:
-    action_time: 2023-11-07 06:56:23.810827+00:00
-    user: 1
-    content_type: 8
-    object_id: '3'
-    object_repr: /services
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 4
-  fields:
-    action_time: 2023-11-07 06:56:43.279241+00:00
-    user: 1
-    content_type: 8
-    object_id: '4'
-    object_repr: /services/sheepdog
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 5
-  fields:
-    action_time: 2023-11-07 06:59:12.294086+00:00
-    user: 1
-    content_type: 8
-    object_id: '4'
-    object_repr: /services/sheepdog
-    action_flag: 2
-    change_message: '[]'
-- model: admin.logentry
-  pk: 6
-  fields:
-    action_time: 2023-11-07 06:59:33.146106+00:00
-    user: 1
-    content_type: 8
-    object_id: '5'
-    object_repr: /services/sheepdog/submission
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 7
-  fields:
-    action_time: 2023-11-07 06:59:46.335833+00:00
-    user: 1
-    content_type: 8
-    object_id: '6'
-    object_repr: /services/sheepdog/submission/program
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 8
-  fields:
-    action_time: 2023-11-07 07:42:18.357462+00:00
-    user: 1
-    content_type: 8
-    object_id: '7'
-    object_repr: /services/sheepdog/submission/project
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 9
-  fields:
-    action_time: 2023-11-07 07:42:35.750514+00:00
-    user: 1
-    content_type: 8
-    object_id: '8'
-    object_repr: /services/indexd
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 10
-  fields:
-    action_time: 2023-11-07 07:42:45.628892+00:00
-    user: 1
-    content_type: 8
-    object_id: '9'
-    object_repr: /services/indexd/admin
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 11
-  fields:
-    action_time: 2023-11-07 07:42:56.504663+00:00
-    user: 1
-    content_type: 8
-    object_id: '10'
-    object_repr: /services/audit
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 12
-  fields:
-    action_time: 2023-11-07 07:43:05.370329+00:00
-    user: 1
-    content_type: 8
-    object_id: '11'
-    object_repr: /services/audit/admin
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 13
-  fields:
-    action_time: 2023-11-07 07:43:33.201152+00:00
-    user: 1
-    content_type: 8
-    object_id: '11'
-    object_repr: /services/audit/admin
-    action_flag: 3
-    change_message: ''
-- model: admin.logentry
-  pk: 14
-  fields:
-    action_time: 2023-11-07 07:44:06.919533+00:00
-    user: 1
-    content_type: 8
-    object_id: '12'
-    object_repr: /services/audit/presigned_url
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 15
-  fields:
-    action_time: 2023-11-07 07:44:19.509621+00:00
-    user: 1
-    content_type: 8
-    object_id: '13'
-    object_repr: /services/audit/login
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 16
-  fields:
-    action_time: 2023-11-07 07:44:36.125172+00:00
-    user: 1
-    content_type: 8
-    object_id: '14'
-    object_repr: /open
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 17
-  fields:
-    action_time: 2023-11-07 07:44:57.426652+00:00
-    user: 1
-    content_type: 8
-    object_id: '15'
-    object_repr: /programs
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 18
-  fields:
-    action_time: 2023-11-07 07:45:13.623516+00:00
-    user: 1
-    content_type: 8
-    object_id: '16'
-    object_repr: /programs/eLwazi
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 19
-  fields:
-    action_time: 2023-11-07 07:45:43.412160+00:00
-    user: 1
-    content_type: 8
-    object_id: '17'
-    object_repr: /programs/eLwazi/projects
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 20
-  fields:
-    action_time: 2023-11-07 07:46:06.419197+00:00
-    user: 1
-    content_type: 8
-    object_id: '18'
-    object_repr: /programs/eLwazi/projects/public
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 21
-  fields:
-    action_time: 2023-11-07 07:47:21.102347+00:00
-    user: 1
-    content_type: 9
-    object_id: workspace
-    object_repr: workspace
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 22
-  fields:
-    action_time: 2023-11-07 07:48:33.000619+00:00
-    user: 1
-    content_type: 8
-    object_id: '19'
-    object_repr: /services/fence
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 23
-  fields:
-    action_time: 2023-11-07 07:48:53.870290+00:00
-    user: 1
-    content_type: 12
-    object_id: '1'
-    object_repr: /services/fence (file_upload)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 24
-  fields:
-    action_time: 2023-11-07 07:49:13.175316+00:00
-    user: 1
-    content_type: 11
-    object_id: file_upload
-    object_repr: 'file_upload : /services/fence (file_upload)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 25
-  fields:
-    action_time: 2023-11-07 07:49:39.022728+00:00
-    user: 1
-    content_type: 8
-    object_id: '20'
-    object_repr: /services/jupyterhub
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 26
-  fields:
-    action_time: 2023-11-07 07:49:51.839181+00:00
-    user: 1
-    content_type: 12
-    object_id: '2'
-    object_repr: /services/jupyterhub (access)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 27
-  fields:
-    action_time: 2023-11-07 07:50:16.524982+00:00
-    user: 1
-    content_type: 12
-    object_id: '3'
-    object_repr: /services/sheepdog (*)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 28
-  fields:
-    action_time: 2023-11-07 07:50:35.461144+00:00
-    user: 1
-    content_type: 12
-    object_id: '4'
-    object_repr: /services/indexd (*)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 29
-  fields:
-    action_time: 2023-11-07 07:51:30.718542+00:00
-    user: 1
-    content_type: 12
-    object_id: '5'
-    object_repr: /services (*)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 30
-  fields:
-    action_time: 2023-11-07 07:52:50.461929+00:00
-    user: 1
-    content_type: 12
-    object_id: '6'
-    object_repr: /services (*)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 31
-  fields:
-    action_time: 2023-11-07 07:55:48.788401+00:00
-    user: 1
-    content_type: 12
-    object_id: '5'
-    object_repr: /services (*)
-    action_flag: 3
-    change_message: ''
-- model: admin.logentry
-  pk: 32
-  fields:
-    action_time: 2023-11-07 07:56:45.930224+00:00
-    user: 1
-    content_type: 12
-    object_id: '7'
-    object_repr: /services (create)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 33
-  fields:
-    action_time: 2023-11-07 07:57:14.264639+00:00
-    user: 1
-    content_type: 12
-    object_id: '8'
-    object_repr: /services (read)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 34
-  fields:
-    action_time: 2023-11-07 07:57:25.630323+00:00
-    user: 1
-    content_type: 12
-    object_id: '9'
-    object_repr: /services (update)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 35
-  fields:
-    action_time: 2023-11-07 07:57:34.816690+00:00
-    user: 1
-    content_type: 12
-    object_id: '10'
-    object_repr: /services (delete)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 36
-  fields:
-    action_time: 2023-11-07 07:57:57.701588+00:00
-    user: 1
-    content_type: 12
-    object_id: '11'
-    object_repr: /services (write-storage)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 37
-  fields:
-    action_time: 2023-11-07 07:58:04.757552+00:00
-    user: 1
-    content_type: 12
-    object_id: '12'
-    object_repr: /services (read-storage)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 38
-  fields:
-    action_time: 2023-11-07 08:02:04.751636+00:00
-    user: 1
-    content_type: 11
-    object_id: workspace_access
-    object_repr: 'workspace_access : /services/jupyterhub (access)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 39
-  fields:
-    action_time: 2023-11-07 08:22:44.289918+00:00
-    user: 1
-    content_type: 11
-    object_id: sheepdog_admin_action
-    object_repr: 'sheepdog_admin_action : /services/sheepdog (*)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 40
-  fields:
-    action_time: 2023-11-07 08:23:01.729204+00:00
-    user: 1
-    content_type: 11
-    object_id: indexd_admin
-    object_repr: 'indexd_admin : /services/indexd (*)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 41
-  fields:
-    action_time: 2023-11-07 08:23:17.528428+00:00
-    user: 1
-    content_type: 11
-    object_id: indexd_admin
-    object_repr: 'indexd_admin : /services/indexd (*)'
-    action_flag: 2
-    change_message: '[]'
-- model: admin.logentry
-  pk: 42
-  fields:
-    action_time: 2023-11-07 08:23:28.070517+00:00
-    user: 1
-    content_type: 11
-    object_id: admin
-    object_repr: 'admin : /services (*)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 43
-  fields:
-    action_time: 2023-11-07 08:23:43.068797+00:00
-    user: 1
-    content_type: 11
-    object_id: creator
-    object_repr: 'creator : /services (create)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 44
-  fields:
-    action_time: 2023-11-07 08:23:54.387772+00:00
-    user: 1
-    content_type: 11
-    object_id: reader
-    object_repr: 'reader : /services (read)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 45
-  fields:
-    action_time: 2023-11-07 08:23:56.368913+00:00
-    user: 1
-    content_type: 11
-    object_id: reader
-    object_repr: 'reader : /services (read)'
-    action_flag: 2
-    change_message: '[]'
-- model: admin.logentry
-  pk: 46
-  fields:
-    action_time: 2023-11-07 08:24:07.699542+00:00
-    user: 1
-    content_type: 11
-    object_id: updater
-    object_repr: 'updater : /services (update)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 47
-  fields:
-    action_time: 2023-11-07 08:24:18.562390+00:00
-    user: 1
-    content_type: 11
-    object_id: deleter
-    object_repr: 'deleter : /services (delete)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 48
-  fields:
-    action_time: 2023-11-07 08:24:32.154150+00:00
-    user: 1
-    content_type: 11
-    object_id: storage_creator
-    object_repr: 'storage_creator : /services (write-storage)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 49
-  fields:
-    action_time: 2023-11-07 08:24:42.153081+00:00
-    user: 1
-    content_type: 11
-    object_id: storage_reader
-    object_repr: 'storage_reader : /services (read-storage)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 50
-  fields:
-    action_time: 2023-11-07 08:25:07.606881+00:00
-    user: 1
-    content_type: 10
-    object_id: file_uploader
-    object_repr: 'file_uploader: file_upload : /services/fence (file_upload)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 51
-  fields:
-    action_time: 2023-11-07 08:25:21.534932+00:00
-    user: 1
-    content_type: 10
-    object_id: workspace_user
-    object_repr: 'workspace_user: workspace_access : /services/jupyterhub (access)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 52
-  fields:
-    action_time: 2023-11-07 08:25:45.355819+00:00
-    user: 1
-    content_type: 10
-    object_id: sheepdog_admin
-    object_repr: 'sheepdog_admin: sheepdog_admin_action : /services/sheepdog (*)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 53
-  fields:
-    action_time: 2023-11-07 08:26:07.310522+00:00
-    user: 1
-    content_type: 10
-    object_id: indexd_admin
-    object_repr: 'indexd_admin: indexd_admin : /services/indexd (*)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 54
-  fields:
-    action_time: 2023-11-07 08:26:18.155009+00:00
-    user: 1
-    content_type: 10
-    object_id: admin
-    object_repr: 'admin: admin : /services (*)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 55
-  fields:
-    action_time: 2023-11-07 08:26:49.321385+00:00
-    user: 1
-    content_type: 10
-    object_id: creator
-    object_repr: 'creator: creator : /services (create)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 56
-  fields:
-    action_time: 2023-11-07 08:27:02.060267+00:00
-    user: 1
-    content_type: 10
-    object_id: reader
-    object_repr: 'reader: reader : /services (read)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 57
-  fields:
-    action_time: 2023-11-07 08:27:12.721618+00:00
-    user: 1
-    content_type: 10
-    object_id: updater
-    object_repr: 'updater: updater : /services (update)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 58
-  fields:
-    action_time: 2023-11-07 08:27:24.802319+00:00
-    user: 1
-    content_type: 10
-    object_id: deleter
-    object_repr: 'deleter: deleter : /services (delete)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 59
-  fields:
-    action_time: 2023-11-07 08:27:34.030970+00:00
-    user: 1
-    content_type: 10
-    object_id: storage_writer
-    object_repr: 'storage_writer: storage_creator : /services (write-storage)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 60
-  fields:
-    action_time: 2023-11-07 08:27:43.407728+00:00
-    user: 1
-    content_type: 10
-    object_id: storage_reader
-    object_repr: 'storage_reader: storage_reader : /services (read-storage)'
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 61
-  fields:
-    action_time: 2023-11-07 08:33:47.461698+00:00
-    user: 1
-    content_type: 9
-    object_id: workspace
-    object_repr: workspace
-    action_flag: 2
-    change_message: '[{"changed": {"fields": ["Roles"]}}]'
-- model: admin.logentry
-  pk: 62
-  fields:
-    action_time: 2023-11-07 08:33:58.232864+00:00
-    user: 1
-    content_type: 9
-    object_id: workspace
-    object_repr: workspace
-    action_flag: 2
-    change_message: '[]'
-- model: admin.logentry
-  pk: 63
-  fields:
-    action_time: 2023-11-07 08:35:09.154474+00:00
-    user: 1
-    content_type: 9
-    object_id: data_upload
-    object_repr: data_upload
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 64
-  fields:
-    action_time: 2023-11-07 08:36:00.737084+00:00
-    user: 1
-    content_type: 9
-    object_id: services.sheepdog-admin
-    object_repr: services.sheepdog-admin
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 65
-  fields:
-    action_time: 2023-11-07 08:36:37.824477+00:00
-    user: 1
-    content_type: 9
-    object_id: indexd_admin
-    object_repr: indexd_admin
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 66
-  fields:
-    action_time: 2023-11-07 08:37:16.236752+00:00
-    user: 1
-    content_type: 9
-    object_id: open_data_reader
-    object_repr: open_data_reader
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 67
-  fields:
-    action_time: 2023-11-07 08:37:54.966940+00:00
-    user: 1
-    content_type: 9
-    object_id: all_programs_reader
-    object_repr: all_programs_reader
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 68
-  fields:
-    action_time: 2023-11-07 08:38:13.878415+00:00
-    user: 1
-    content_type: 9
-    object_id: all_programs_reader
-    object_repr: all_programs_reader
-    action_flag: 2
-    change_message: '[]'
-- model: admin.logentry
-  pk: 69
-  fields:
-    action_time: 2023-11-07 08:39:26.597719+00:00
-    user: 1
-    content_type: 9
-    object_id: eLwaziProject_submitter
-    object_repr: eLwaziProject_submitter
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 70
-  fields:
-    action_time: 2023-11-07 08:46:02.234698+00:00
-    user: 1
-    content_type: 14
-    object_id: dane@idia.ac.za
-    object_repr: Gen3User object (dane@idia.ac.za)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 71
-  fields:
-    action_time: 2023-11-07 08:47:22.596215+00:00
-    user: 1
-    content_type: 14
-    object_id: dane@idia.ac.za
-    object_repr: Gen3User object (dane@idia.ac.za)
-    action_flag: 2
-    change_message: '[{"changed": {"fields": ["Tags"]}}]'
-- model: admin.logentry
-  pk: 72
-  fields:
-    action_time: 2023-11-07 09:20:51.032169+00:00
-    user: 1
-    content_type: 14
-    object_id: dane@idia.ac.za
-    object_repr: Gen3User object (dane@idia.ac.za)
-    action_flag: 2
-    change_message: '[]'
-- model: admin.logentry
-  pk: 73
-  fields:
-    action_time: 2023-11-07 09:22:12.942029+00:00
-    user: 1
-    content_type: 14
-    object_id: bundeaoo@gmail.com
-    object_repr: Gen3User object (bundeaoo@gmail.com)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 74
-  fields:
-    action_time: 2023-11-07 09:27:12.919620+00:00
-    user: 1
-    content_type: 7
-    object_id: data_submitters
-    object_repr: Gen3Group object (data_submitters)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 75
-  fields:
-    action_time: 2023-11-07 09:27:34.610058+00:00
-    user: 1
-    content_type: 7
-    object_id: indexd_admins
-    object_repr: Gen3Group object (indexd_admins)
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: admin.logentry
-  pk: 76
-  fields:
-    action_time: 2023-11-07 10:13:51.838401+00:00
-    user: 1
-    content_type: 9
-    object_id: open_data_reader
-    object_repr: open_data_reader
-    action_flag: 2
-    change_message: '[{"changed": {"fields": ["Is anonymous policy"]}}]'
-- model: admin.logentry
-  pk: 77
-  fields:
-    action_time: 2023-11-07 10:38:32.300878+00:00
-    user: 1
-    content_type: 13
-    object_id: wts
-    object_repr: wts
-    action_flag: 1
-    change_message: '[{"added": {}}]'
-- model: auth.permission
-  pk: 1
-  fields:
-    name: Can add log entry
-    content_type: 1
-    codename: add_logentry
-- model: auth.permission
-  pk: 2
-  fields:
-    name: Can change log entry
-    content_type: 1
-    codename: change_logentry
-- model: auth.permission
-  pk: 3
-  fields:
-    name: Can delete log entry
-    content_type: 1
-    codename: delete_logentry
-- model: auth.permission
-  pk: 4
-  fields:
-    name: Can view log entry
-    content_type: 1
-    codename: view_logentry
-- model: auth.permission
-  pk: 5
-  fields:
-    name: Can add permission
-    content_type: 2
-    codename: add_permission
-- model: auth.permission
-  pk: 6
-  fields:
-    name: Can change permission
-    content_type: 2
-    codename: change_permission
-- model: auth.permission
-  pk: 7
-  fields:
-    name: Can delete permission
-    content_type: 2
-    codename: delete_permission
-- model: auth.permission
-  pk: 8
-  fields:
-    name: Can view permission
-    content_type: 2
-    codename: view_permission
-- model: auth.permission
-  pk: 9
-  fields:
-    name: Can add group
-    content_type: 3
-    codename: add_group
-- model: auth.permission
-  pk: 10
-  fields:
-    name: Can change group
-    content_type: 3
-    codename: change_group
-- model: auth.permission
-  pk: 11
-  fields:
-    name: Can delete group
-    content_type: 3
-    codename: delete_group
-- model: auth.permission
-  pk: 12
-  fields:
-    name: Can view group
-    content_type: 3
-    codename: view_group
-- model: auth.permission
-  pk: 13
-  fields:
-    name: Can add user
-    content_type: 4
-    codename: add_user
-- model: auth.permission
-  pk: 14
-  fields:
-    name: Can change user
-    content_type: 4
-    codename: change_user
-- model: auth.permission
-  pk: 15
-  fields:
-    name: Can delete user
-    content_type: 4
-    codename: delete_user
-- model: auth.permission
-  pk: 16
-  fields:
-    name: Can view user
-    content_type: 4
-    codename: view_user
-- model: auth.permission
-  pk: 17
-  fields:
-    name: Can add content type
-    content_type: 5
-    codename: add_contenttype
-- model: auth.permission
-  pk: 18
-  fields:
-    name: Can change content type
-    content_type: 5
-    codename: change_contenttype
-- model: auth.permission
-  pk: 19
-  fields:
-    name: Can delete content type
-    content_type: 5
-    codename: delete_contenttype
-- model: auth.permission
-  pk: 20
-  fields:
-    name: Can view content type
-    content_type: 5
-    codename: view_contenttype
-- model: auth.permission
-  pk: 21
-  fields:
-    name: Can add session
-    content_type: 6
-    codename: add_session
-- model: auth.permission
-  pk: 22
-  fields:
-    name: Can change session
-    content_type: 6
-    codename: change_session
-- model: auth.permission
-  pk: 23
-  fields:
-    name: Can delete session
-    content_type: 6
-    codename: delete_session
-- model: auth.permission
-  pk: 24
-  fields:
-    name: Can view session
-    content_type: 6
-    codename: view_session
-- model: auth.permission
-  pk: 25
-  fields:
-    name: Can add gen3 group
-    content_type: 7
-    codename: add_gen3group
-- model: auth.permission
-  pk: 26
-  fields:
-    name: Can change gen3 group
-    content_type: 7
-    codename: change_gen3group
-- model: auth.permission
-  pk: 27
-  fields:
-    name: Can delete gen3 group
-    content_type: 7
-    codename: delete_gen3group
-- model: auth.permission
-  pk: 28
-  fields:
-    name: Can view gen3 group
-    content_type: 7
-    codename: view_gen3group
-- model: auth.permission
-  pk: 29
-  fields:
-    name: Can add gen3 resource
-    content_type: 8
-    codename: add_gen3resource
-- model: auth.permission
-  pk: 30
-  fields:
-    name: Can change gen3 resource
-    content_type: 8
-    codename: change_gen3resource
-- model: auth.permission
-  pk: 31
-  fields:
-    name: Can delete gen3 resource
-    content_type: 8
-    codename: delete_gen3resource
-- model: auth.permission
-  pk: 32
-  fields:
-    name: Can view gen3 resource
-    content_type: 8
-    codename: view_gen3resource
-- model: auth.permission
-  pk: 33
-  fields:
-    name: Can add gen3 policy
-    content_type: 9
-    codename: add_gen3policy
-- model: auth.permission
-  pk: 34
-  fields:
-    name: Can change gen3 policy
-    content_type: 9
-    codename: change_gen3policy
-- model: auth.permission
-  pk: 35
-  fields:
-    name: Can delete gen3 policy
-    content_type: 9
-    codename: delete_gen3policy
-- model: auth.permission
-  pk: 36
-  fields:
-    name: Can view gen3 policy
-    content_type: 9
-    codename: view_gen3policy
-- model: auth.permission
-  pk: 37
-  fields:
-    name: Can add gen3 role
-    content_type: 10
-    codename: add_gen3role
-- model: auth.permission
-  pk: 38
-  fields:
-    name: Can change gen3 role
-    content_type: 10
-    codename: change_gen3role
-- model: auth.permission
-  pk: 39
-  fields:
-    name: Can delete gen3 role
-    content_type: 10
-    codename: delete_gen3role
-- model: auth.permission
-  pk: 40
-  fields:
-    name: Can view gen3 role
-    content_type: 10
-    codename: view_gen3role
-- model: auth.permission
-  pk: 41
-  fields:
-    name: Can add gen3 permission
-    content_type: 11
-    codename: add_gen3permission
-- model: auth.permission
-  pk: 42
-  fields:
-    name: Can change gen3 permission
-    content_type: 11
-    codename: change_gen3permission
-- model: auth.permission
-  pk: 43
-  fields:
-    name: Can delete gen3 permission
-    content_type: 11
-    codename: delete_gen3permission
-- model: auth.permission
-  pk: 44
-  fields:
-    name: Can view gen3 permission
-    content_type: 11
-    codename: view_gen3permission
-- model: auth.permission
-  pk: 45
-  fields:
-    name: Can add gen3 action
-    content_type: 12
-    codename: add_gen3action
-- model: auth.permission
-  pk: 46
-  fields:
-    name: Can change gen3 action
-    content_type: 12
-    codename: change_gen3action
-- model: auth.permission
-  pk: 47
-  fields:
-    name: Can delete gen3 action
-    content_type: 12
-    codename: delete_gen3action
-- model: auth.permission
-  pk: 48
-  fields:
-    name: Can view gen3 action
-    content_type: 12
-    codename: view_gen3action
-- model: auth.permission
-  pk: 49
-  fields:
-    name: Can add gen3 client
-    content_type: 13
-    codename: add_gen3client
-- model: auth.permission
-  pk: 50
-  fields:
-    name: Can change gen3 client
-    content_type: 13
-    codename: change_gen3client
-- model: auth.permission
-  pk: 51
-  fields:
-    name: Can delete gen3 client
-    content_type: 13
-    codename: delete_gen3client
-- model: auth.permission
-  pk: 52
-  fields:
-    name: Can view gen3 client
-    content_type: 13
-    codename: view_gen3client
-- model: auth.permission
-  pk: 53
-  fields:
-    name: Can add gen3 user
-    content_type: 14
-    codename: add_gen3user
-- model: auth.permission
-  pk: 54
-  fields:
-    name: Can change gen3 user
-    content_type: 14
-    codename: change_gen3user
-- model: auth.permission
-  pk: 55
-  fields:
-    name: Can delete gen3 user
-    content_type: 14
-    codename: delete_gen3user
-- model: auth.permission
-  pk: 56
-  fields:
-    name: Can view gen3 user
-    content_type: 14
-    codename: view_gen3user
-- model: auth.permission
-  pk: 57
-  fields:
-    name: Can add gen3 program
-    content_type: 15
-    codename: add_gen3program
-- model: auth.permission
-  pk: 58
-  fields:
-    name: Can change gen3 program
-    content_type: 15
-    codename: change_gen3program
-- model: auth.permission
-  pk: 59
-  fields:
-    name: Can delete gen3 program
-    content_type: 15
-    codename: delete_gen3program
-- model: auth.permission
-  pk: 60
-  fields:
-    name: Can view gen3 program
-    content_type: 15
-    codename: view_gen3program
-- model: auth.permission
-  pk: 61
-  fields:
-    name: Can add gen3 project
-    content_type: 16
-    codename: add_gen3project
-- model: auth.permission
-  pk: 62
-  fields:
-    name: Can change gen3 project
-    content_type: 16
-    codename: change_gen3project
-- model: auth.permission
-  pk: 63
-  fields:
-    name: Can delete gen3 project
-    content_type: 16
-    codename: delete_gen3project
-- model: auth.permission
-  pk: 64
-  fields:
-    name: Can view gen3 project
-    content_type: 16
-    codename: view_gen3project
-- model: auth.user
-  pk: 1
-  fields:
-    password: pbkdf2_sha256$600000$RHdJlVxggH7iFGGdjkgsPu$9CZh5NmO3qzZnj/Htmma00zZux0tNdvc54kN2MZblek=
-    last_login: 2023-11-07 06:51:51.779403+00:00
-    is_superuser: true
-    username: dane
-    first_name: ''
-    last_name: ''
-    email: ''
-    is_staff: true
-    is_active: true
-    date_joined: 2023-11-07 06:51:42.960323+00:00
-    groups: []
-    user_permissions: []
-- model: contenttypes.contenttype
-  pk: 1
-  fields:
-    app_label: admin
-    model: logentry
-- model: contenttypes.contenttype
-  pk: 2
-  fields:
-    app_label: auth
-    model: permission
-- model: contenttypes.contenttype
-  pk: 3
-  fields:
-    app_label: auth
-    model: group
-- model: contenttypes.contenttype
-  pk: 4
-  fields:
-    app_label: auth
-    model: user
-- model: contenttypes.contenttype
-  pk: 5
-  fields:
-    app_label: contenttypes
-    model: contenttype
-- model: contenttypes.contenttype
-  pk: 6
-  fields:
-    app_label: sessions
-    model: session
-- model: contenttypes.contenttype
-  pk: 7
-  fields:
-    app_label: users
-    model: gen3group
-- model: contenttypes.contenttype
-  pk: 8
-  fields:
-    app_label: users
-    model: gen3resource
-- model: contenttypes.contenttype
-  pk: 9
-  fields:
-    app_label: users
-    model: gen3policy
-- model: contenttypes.contenttype
-  pk: 10
-  fields:
-    app_label: users
-    model: gen3role
-- model: contenttypes.contenttype
-  pk: 11
-  fields:
-    app_label: users
-    model: gen3permission
-- model: contenttypes.contenttype
-  pk: 12
-  fields:
-    app_label: users
-    model: gen3action
-- model: contenttypes.contenttype
-  pk: 13
-  fields:
-    app_label: users
-    model: gen3client
-- model: contenttypes.contenttype
-  pk: 14
-  fields:
-    app_label: users
-    model: gen3user
-- model: contenttypes.contenttype
-  pk: 15
-  fields:
-    app_label: users
-    model: gen3program
-- model: contenttypes.contenttype
-  pk: 16
-  fields:
-    app_label: users
-    model: gen3project
-- model: sessions.session
-  pk: 25u7wp8b9t5fehpe1and1c4ck6qqvhei
-  fields:
-    session_data: .eJxVjEEOwiAQRe_C2pApFAIu3XsGMsOAVA1NSrtqvLs06UK3_73_dhFwW0vYWlrCxOIqBnH53QjjK9UD8BPrY5ZxrusykTwUedIm7zOn9-10_wIFW-lvBcQxMcKYbQLvVbY2eRwZstE9Y0jbDsE5bRxErzU4QoWGBqbMWny-90g4SA:1r0FwF:-IzMCfKw_1_RoGGKc_vpQp-DRqu2Pu7-HyQto2fgxUw
-    expire_date: 2023-11-21 06:51:51.781476+00:00
-- model: users.gen3group
-  pk: data_submitters
-  fields:
-    policies:
-    - data_upload
-    - eLwaziProject_submitter
-    - services.sheepdog-admin
-    users:
-    - bundeaoo@gmail.com
-    - dane@idia.ac.za
-- model: users.gen3group
-  pk: indexd_admins
-  fields:
-    policies:
-    - indexd_admin
-    users:
-    - dane@idia.ac.za
 - model: users.gen3resource
-  pk: 1
   fields:
     name: workspace
     parent_resource: null
 - model: users.gen3resource
-  pk: 2
   fields:
     name: data_file
     parent_resource: null
 - model: users.gen3resource
-  pk: 3
   fields:
     name: services
     parent_resource: null
 - model: users.gen3resource
-  pk: 4
   fields:
     name: sheepdog
-    parent_resource: 3
+    parent_resource:
+    - services
 - model: users.gen3resource
-  pk: 5
   fields:
     name: submission
-    parent_resource: 4
+    parent_resource:
+    - sheepdog
+    - - services
 - model: users.gen3resource
-  pk: 6
   fields:
     name: program
-    parent_resource: 5
+    parent_resource:
+    - submission
+    - - sheepdog
+      - - services
 - model: users.gen3resource
-  pk: 7
   fields:
     name: project
-    parent_resource: 5
+    parent_resource:
+    - submission
+    - - sheepdog
+      - - services
 - model: users.gen3resource
-  pk: 8
   fields:
     name: indexd
-    parent_resource: 3
+    parent_resource:
+    - services
 - model: users.gen3resource
-  pk: 9
   fields:
     name: admin
-    parent_resource: 8
+    parent_resource:
+    - indexd
+    - - services
 - model: users.gen3resource
-  pk: 10
   fields:
     name: audit
-    parent_resource: 3
+    parent_resource:
+    - services
 - model: users.gen3resource
-  pk: 12
   fields:
     name: presigned_url
-    parent_resource: 10
+    parent_resource:
+    - audit
+    - - services
 - model: users.gen3resource
-  pk: 13
   fields:
     name: login
-    parent_resource: 10
+    parent_resource:
+    - audit
+    - - services
 - model: users.gen3resource
-  pk: 14
   fields:
     name: open
     parent_resource: null
 - model: users.gen3resource
-  pk: 15
   fields:
     name: programs
     parent_resource: null
 - model: users.gen3resource
-  pk: 16
   fields:
     name: eLwazi
-    parent_resource: 15
+    parent_resource:
+    - programs
 - model: users.gen3resource
-  pk: 17
   fields:
     name: projects
-    parent_resource: 16
+    parent_resource:
+    - eLwazi
+    - - programs
 - model: users.gen3resource
-  pk: 18
   fields:
     name: public
-    parent_resource: 17
+    parent_resource:
+    - projects
+    - - eLwazi
+      - - programs
 - model: users.gen3resource
-  pk: 19
   fields:
     name: fence
-    parent_resource: 3
+    parent_resource:
+    - services
 - model: users.gen3resource
-  pk: 20
   fields:
     name: jupyterhub
-    parent_resource: 3
+    parent_resource:
+    - services
+- model: users.gen3action
+  fields:
+    service:
+    - fence
+    - - services
+    action: FU
+- model: users.gen3action
+  fields:
+    service:
+    - jupyterhub
+    - - services
+    action: AC
+- model: users.gen3action
+  fields:
+    service:
+    - sheepdog
+    - - services
+    action: AL
+- model: users.gen3action
+  fields:
+    service:
+    - indexd
+    - - services
+    action: AL
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: AL
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: CR
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: RD
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: UP
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: DL
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: WS
+- model: users.gen3action
+  fields:
+    service:
+    - services
+    action: RS
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - AL
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - CR
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - DL
+- model: users.gen3permission
+  fields:
+    action:
+    - fence
+    - FU
+- model: users.gen3permission
+  fields:
+    action:
+    - indexd
+    - AL
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - RD
+- model: users.gen3permission
+  fields:
+    action:
+    - sheepdog
+    - AL
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - WS
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - RS
+- model: users.gen3permission
+  fields:
+    action:
+    - services
+    - UP
+- model: users.gen3permission
+  fields:
+    action:
+    - jupyterhub
+    - AC
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - admin
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - creator
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - deleter
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - file_upload
+- model: users.gen3role
+  fields:
+    description: full access to indexd API
+    permissions:
+    - - indexd_admin
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - reader
+- model: users.gen3role
+  fields:
+    description: CRUD access to programs and projects
+    permissions:
+    - - sheepdog_admin_action
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - storage_reader
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - storage_creator
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - updater
+- model: users.gen3role
+  fields:
+    description: ''
+    permissions:
+    - - workspace_access
 - model: users.gen3policy
-  pk: all_programs_reader
   fields:
     description: ''
     is_anonymous_policy: false
     is_all_users_policy: false
     roles:
-    - reader
-    - storage_reader
+    - - reader
+    - - storage_reader
     resources:
-    - 15
+    - - programs
 - model: users.gen3policy
-  pk: data_upload
   fields:
     description: upload raw data files to S3
     is_anonymous_policy: false
     is_all_users_policy: false
     roles:
-    - file_uploader
+    - - file_uploader
     resources:
-    - 2
+    - - data_file
 - model: users.gen3policy
-  pk: eLwaziProject_submitter
   fields:
     description: ''
     is_anonymous_policy: false
     is_all_users_policy: false
     roles:
-    - creator
-    - deleter
-    - reader
-    - storage_reader
-    - storage_writer
-    - updater
+    - - creator
+    - - deleter
+    - - reader
+    - - storage_reader
+    - - storage_writer
+    - - updater
     resources:
-    - 18
+    - - public
+      - - projects
+        - - eLwazi
+          - - programs
 - model: users.gen3policy
-  pk: indexd_admin
   fields:
     description: full access to indexd API
     is_anonymous_policy: false
     is_all_users_policy: false
     roles:
-    - indexd_admin
+    - - indexd_admin
     resources:
-    - 15
+    - - programs
 - model: users.gen3policy
-  pk: open_data_reader
   fields:
     description: ''
     is_anonymous_policy: true
     is_all_users_policy: false
     roles:
-    - reader
-    - storage_reader
+    - - reader
+    - - storage_reader
     resources:
-    - 14
+    - - open
 - model: users.gen3policy
-  pk: services.sheepdog-admin
   fields:
     description: CRUD access to programs and projects
     is_anonymous_policy: false
     is_all_users_policy: false
     roles:
-    - sheepdog_admin
+    - - sheepdog_admin
     resources:
-    - 6
-    - 7
+    - - program
+      - - submission
+        - - sheepdog
+          - - services
+    - - project
+      - - submission
+        - - sheepdog
+          - - services
 - model: users.gen3policy
-  pk: workspace
   fields:
     description: be able to use workspace
     is_anonymous_policy: false
     is_all_users_policy: false
     roles:
-    - workspace_user
+    - - workspace_user
     resources:
-    - 1
-- model: users.gen3role
-  pk: admin
-  fields:
-    description: ''
-    permissions:
-    - admin
-- model: users.gen3role
-  pk: creator
-  fields:
-    description: ''
-    permissions:
-    - creator
-- model: users.gen3role
-  pk: deleter
-  fields:
-    description: ''
-    permissions:
-    - deleter
-- model: users.gen3role
-  pk: file_uploader
-  fields:
-    description: ''
-    permissions:
-    - file_upload
-- model: users.gen3role
-  pk: indexd_admin
-  fields:
-    description: full access to indexd API
-    permissions:
-    - indexd_admin
-- model: users.gen3role
-  pk: reader
-  fields:
-    description: ''
-    permissions:
-    - reader
-- model: users.gen3role
-  pk: sheepdog_admin
-  fields:
-    description: CRUD access to programs and projects
-    permissions:
-    - sheepdog_admin_action
-- model: users.gen3role
-  pk: storage_reader
-  fields:
-    description: ''
-    permissions:
-    - storage_reader
-- model: users.gen3role
-  pk: storage_writer
-  fields:
-    description: ''
-    permissions:
-    - storage_creator
-- model: users.gen3role
-  pk: updater
-  fields:
-    description: ''
-    permissions:
-    - updater
-- model: users.gen3role
-  pk: workspace_user
-  fields:
-    description: ''
-    permissions:
-    - workspace_access
-- model: users.gen3permission
-  pk: admin
-  fields:
-    action: 6
-- model: users.gen3permission
-  pk: creator
-  fields:
-    action: 7
-- model: users.gen3permission
-  pk: deleter
-  fields:
-    action: 10
-- model: users.gen3permission
-  pk: file_upload
-  fields:
-    action: 1
-- model: users.gen3permission
-  pk: indexd_admin
-  fields:
-    action: 4
-- model: users.gen3permission
-  pk: reader
-  fields:
-    action: 8
-- model: users.gen3permission
-  pk: sheepdog_admin_action
-  fields:
-    action: 3
-- model: users.gen3permission
-  pk: storage_creator
-  fields:
-    action: 11
-- model: users.gen3permission
-  pk: storage_reader
-  fields:
-    action: 12
-- model: users.gen3permission
-  pk: updater
-  fields:
-    action: 9
-- model: users.gen3permission
-  pk: workspace_access
-  fields:
-    action: 2
-- model: users.gen3action
-  pk: 1
-  fields:
-    service: 19
-    action: FU
-- model: users.gen3action
-  pk: 2
-  fields:
-    service: 20
-    action: AC
-- model: users.gen3action
-  pk: 3
-  fields:
-    service: 4
-    action: AL
-- model: users.gen3action
-  pk: 4
-  fields:
-    service: 8
-    action: AL
-- model: users.gen3action
-  pk: 6
-  fields:
-    service: 3
-    action: AL
-- model: users.gen3action
-  pk: 7
-  fields:
-    service: 3
-    action: CR
-- model: users.gen3action
-  pk: 8
-  fields:
-    service: 3
-    action: RD
-- model: users.gen3action
-  pk: 9
-  fields:
-    service: 3
-    action: UP
-- model: users.gen3action
-  pk: 10
-  fields:
-    service: 3
-    action: DL
-- model: users.gen3action
-  pk: 11
-  fields:
-    service: 3
-    action: WS
-- model: users.gen3action
-  pk: 12
-  fields:
-    service: 3
-    action: RS
+    - - workspace
 - model: users.gen3client
-  pk: wts
   fields:
     policies:
-    - all_programs_reader
-    - open_data_reader
+    - - all_programs_reader
+    - - open_data_reader
+- model: users.gen3group
+  fields:
+    policies:
+    - - data_upload
+    - - eLwaziProject_submitter
+    - - services.sheepdog-admin
+    users:
+    - - bundeaoo@gmail.com
+    - - dane@idia.ac.za
+- model: users.gen3group
+  fields:
+    policies:
+    - - indexd_admin
+    users:
+    - - dane@idia.ac.za

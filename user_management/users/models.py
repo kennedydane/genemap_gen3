@@ -28,13 +28,18 @@ class Gen3Group(models.Model):
             'users': [user.name for user in self.users.all()]
         }
 
+    def natural_key(self):
+        return (self.name,)
+
     class Meta:
         ordering = ['name']
 
 
 class Gen3ResourceManager(models.Manager):
     def get_by_natural_key(self, name, parent_resource):
-        return self.get(name=name, parent_resource=parent_resource)
+        if parent_resource:
+            return self.get(name=name, parent_resource=self.get_by_natural_key(*parent_resource))
+        return self.get(name=name, parent_resource=None)
 
 
 class Gen3Resource(models.Model):
@@ -64,11 +69,21 @@ class Gen3Resource(models.Model):
             the_dict['subresources'] = sub_resources
         return the_dict
 
+    def natural_key(self):
+        if self.parent_resource:
+            return (self.name, self.parent_resource.natural_key())
+        return (self.name, )
+
     class Meta:
         ordering = ['parent_resource__name', 'name']
         constraints = [
             models.UniqueConstraint(fields=['name', 'parent_resource'], name='unique_resource_name')
         ]
+
+
+class Gen3PolicyManager(models.Manager):
+    def get_by_natural_key(self, id):
+        return self.get(id=id)
 
 
 class Gen3Policy(models.Model):
@@ -78,6 +93,8 @@ class Gen3Policy(models.Model):
     resources = models.ManyToManyField('Gen3Resource', blank=True)
     is_anonymous_policy = models.BooleanField(default=False)
     is_all_users_policy = models.BooleanField(default=False)
+
+    objects = Gen3PolicyManager()
 
     def __str__(self):
         return self.id
@@ -94,15 +111,25 @@ class Gen3Policy(models.Model):
             del the_dict['description']
         return the_dict
 
+    def natural_key(self):
+        return (self.id,)
+
     class Meta:
         verbose_name_plural = 'Gen3 policies'
         ordering = ['id']
+
+
+class Gen3RoleManager(models.Manager):
+    def get_by_natural_key(self, id):
+        return self.get(id=id)
 
 
 class Gen3Role(models.Model):
     id = models.CharField(max_length=255, primary_key=True)
     description = models.CharField(max_length=255, blank=True)
     permissions = models.ManyToManyField('Gen3Permission')
+
+    objects = Gen3RoleManager()
 
     def __str__(self):
         return f'{self.id}: {"; ".join(str(permission) for permission in self.permissions.all())}'
@@ -118,13 +145,23 @@ class Gen3Role(models.Model):
             del the_dict['description']
         return the_dict
 
+    def natural_key(self):
+        return (self.id,)
+
     class Meta:
         ordering = ['id']
+
+
+class Gen3PermissionManager(models.Manager):
+    def get_by_natural_key(self, id):
+        return self.get(id=id)
 
 
 class Gen3Permission(models.Model):
     id = models.CharField(max_length=255, primary_key=True)
     action = models.ForeignKey('Gen3Action', on_delete=models.CASCADE)
+
+    objects = Gen3PermissionManager()
 
     def __str__(self):
         return f'{self.id} : {self.action}'
@@ -136,8 +173,16 @@ class Gen3Permission(models.Model):
             'action': self.action.to_dict,
         }
 
+    def natural_key(self):
+        return (self.id,)
+
     class Meta:
         ordering = ['id']
+
+
+class Gen3ActionManager(models.Manager):
+    def get_by_natural_key(self, service, action):
+        return self.get(service=service, action=action)
 
 
 class Gen3Action(models.Model):
@@ -165,11 +210,19 @@ class Gen3Action(models.Model):
             'method': self.get_action_display(),
         }
 
+    def natural_key(self):
+        return (self.service.name, self.action)
+
     class Meta:
         ordering = ['service', 'action']
         constraints = [
             models.UniqueConstraint(fields=['service', 'action'], name='unique_action')
         ]
+
+
+class Gen3ClientManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
 
 
 class Gen3Client(models.Model):
@@ -185,6 +238,17 @@ class Gen3Client(models.Model):
             'name': self.name,
             'policies': [policy.id for policy in self.policies.all()],
         }
+
+    def natural_key(self):
+        return (self.name,)
+
+    class Meta:
+        ordering = ['name']
+
+
+class Gen3UserManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
 
 
 class Gen3User(models.Model):
@@ -204,6 +268,9 @@ class Gen3User(models.Model):
                 'tags': self.tags,
             }
         }
+
+    def natural_key(self):
+        return (self.name,)
 
     class Meta:
         ordering = ['name']
