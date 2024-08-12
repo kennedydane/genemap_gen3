@@ -11,13 +11,76 @@
     chdir: /home/{{ gen3.user }}
   register: helm_repo_update
 
-- name: Create/update values.yml
-  tags: values
+- name: Create .s3cfg file
+  tags: [s3cfg,s3]
   template:
-    src: values.yml
-    dest: "~/values.yml"
+    src: s3cfg
+    dest: ~/.s3cfg
     mode: 0600
 
-#- name: Start gen3 helm
-#  become: no
-#  command: helm upgrade --install elwazirelease gen3/gen3 -f /home/{{ ansible_user }}/values.yml
+- name: Create virtualenv
+  tags: [virtualenv]
+  pip:
+    name:
+      - s3cmd
+      - python-openstackclient
+    state: latest
+    virtualenv_command: virtualenv
+    virtualenv: ~/.venv
+
+- name: Create s3 bucket
+  tags: [s3,bucket]
+  command: "~/.venv/bin/s3cmd mb s3://{{ item }}"
+  with_items:
+    - "{{ gen3.user_bucket_name }}"
+    - "{{ gen3.data_bucket_name }}"
+
+- name: Create/update values.yml and other config files
+  tags: values,config
+  template:
+    src: "{{ item }}"
+    dest: "~/{{ item }}"
+    mode: 0600
+  with_items:
+    - values.yml
+    - do_users.yaml
+    - ingress.yaml
+    - ingressconfig.yaml
+    - kubedns.yaml
+    - kubedns2.yaml
+    - revproxy.yaml
+    - portal.yaml
+
+- name: Create/update useryaml
+  tags: useryaml
+  template:
+    src: "{{ item }}"
+    dest: "~/{{ item }}"
+    mode: 0600
+  with_items:
+    - user.yaml
+    - useryamljob.yaml
+
+- name: Update user.yaml
+  tags: useryaml
+  template:
+      src: user.yaml
+      dest: ~/user.yaml
+      mode: 0600
+  notify: run do_users
+
+- name: Stick user.yaml in s3
+  tags: s3,user
+  command: "~/.venv/bin/s3cmd put ~/user.yaml s3://{{ gen3.user_bucket_name }}/user.yaml"
+
+- name: Start gen3 helm
+  tags: helm
+  command: bin/helm upgrade --install elwazirelease gen3/gen3 -f ~/values.yml -f ~/portal.yaml  # -f ingress.yaml -f ingressconfig.yaml -f kubedns.yaml -f revproxy.yaml
+  args:
+    chdir: /home/{{ gen3.user }}
+
+- name: Apply kubedns2.yaml
+  tags: kubedns
+  command: bin/kubectl apply -f ~/kubedns2.yaml
+  args:
+      chdir: /home/{{ gen3.user }}
