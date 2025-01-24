@@ -1,9 +1,9 @@
+
 ---
 authz:
   # policies automatically given to anyone, even if they are not authenticated
   anonymous_policies:
     - open_data_reader
-
   # policies automatically given to authenticated users (in addition to their other policies)
   all_users_policies: []
 
