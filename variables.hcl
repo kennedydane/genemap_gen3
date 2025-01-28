@@ -91,7 +91,7 @@ variable "floating_ip_network_id" {
 variable "network_ids" {
   type = list(string)
   description = "Name of networks to be used when building images"
-  default = ["0849e923-df2c-42a6-9ef8-1b0c9cd38182"]
+  # default = ["0849e923-df2c-42a6-9ef8-1b0c9cd38182"]
 }
 
 variable "security_groups" {
