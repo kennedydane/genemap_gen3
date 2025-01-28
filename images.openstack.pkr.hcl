@@ -22,6 +22,7 @@ locals {
 source "openstack" "base_image" {
   flavor       = "${var.build_image_flavour}"
   image_name   = "${local.base_image_name}"
+  # image_disk_format       = "qcow2"
   external_source_image_url = "${var.base_image_source}"
   external_source_image_format = "${var.base_image_source_format}"
   ssh_username = "${var.admin_user}"
@@ -40,6 +41,7 @@ source "openstack" "base_image" {
 source "openstack" "database_image" {
   flavor       = "${var.build_image_flavour}"
   image_name   = "${local.database_image_name}"
+  # format       = "qcow2"
   source_image_name = "${local.base_image_name}"
   ssh_username = "${var.admin_user}"
   networks = "${var.network_ids}"
@@ -57,6 +59,7 @@ source "openstack" "database_image" {
 source "openstack" "load_balancer_image" {
   flavor       = "${var.build_image_flavour}"
   image_name   = "${local.load_balancer_image_name}"
+  # format       = "qcow2"
   source_image_name = "${local.base_image_name}"
   ssh_username = "${var.admin_user}"
   networks = "${var.network_ids}"
@@ -74,6 +77,7 @@ source "openstack" "load_balancer_image" {
 source "openstack" "rancher_rke2_server_image" {
   flavor       = "${var.build_image_flavour}"
   image_name   = "${local.rancher_rke2_server_image_name}"
+  # format       = "qcow2"
   source_image_name = "${local.base_image_name}"
   ssh_username = "${var.admin_user}"
   networks = "${var.network_ids}"
@@ -91,6 +95,7 @@ source "openstack" "rancher_rke2_server_image" {
 source "openstack" "rancher_rke2_worker_image" {
   flavor       = "${var.build_image_flavour}"
   image_name   = "${local.rancher_rke2_worker_image_name}"
+  # format       = "qcow2"
   source_image_name = "${local.base_image_name}"
   ssh_username = "${var.admin_user}"
   networks = "${var.network_ids}"
@@ -185,19 +190,19 @@ build {
   }
 }
 
-build {
-  name = "step5"
-  sources = [
-    "source.openstack.rancher_rke2_server_image"
-  ]
-    provisioner "ansible" {
-    use_proxy = false
-    playbook_file = "./rancher.yml"
-    extra_arguments = ["--tags", "build"]
-    user = "${var.admin_user}"
-    groups = [
-      "rancher_image"
-    ]
-  }
-}
+# build {
+#   name = "step5"
+#   sources = [
+#     "source.openstack.rancher_rke2_server_image"
+#   ]
+#     provisioner "ansible" {
+#     use_proxy = false
+#     playbook_file = "./rancher.yml"
+#     extra_arguments = ["--tags", "build"]
+#     user = "${var.admin_user}"
+#     groups = [
+#       "rancher_image"
+#     ]
+#   }
+# }
 
