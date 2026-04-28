@@ -34,11 +34,17 @@
   register: uv_install
   changed_when: "'Installed' in uv_install.stdout"
 
+- name: Resolve Gen3 users bucket name
+  tags: [s3, user]
+  set_fact:
+    gen3_user_bucket_name: "{{ gen3.user_bucket_name | default(gen3.hostname ~ '-user-bucket') }}"
+
 - name: Create S3 buckets
   tags: [s3, bucket]
   command: "~/.venv/bin/s3cmd mb s3://{{ item }}"
   with_items:
     - "{{ gen3.data_bucket_name }}"
+    - "{{ gen3_user_bucket_name }}"
   register: create_bucket
   failed_when:
     - create_bucket.rc != 0
@@ -52,6 +58,35 @@
     stdin: "{{ lookup('template', 'gen3-db-creds.yaml.j2') }}"
   register: gen3_db_creds_apply
   changed_when: '"unchanged" not in gen3_db_creds_apply.stdout'
+
+- name: Assert gen3_users is defined and non-empty
+  tags: [s3, user]
+  assert:
+    that:
+      - gen3_users is defined
+      - gen3_users | length > 0
+    fail_msg: >
+      gen3_users must be defined and non-empty in group_vars/all.
+      Copy group_vars/all.template to group_vars/all and populate gen3_users.
+
+- name: Render user.yaml from template
+  tags: [s3, user]
+  template:
+    src: user.yaml.j2
+    dest: ~/user.yaml
+    mode: 0600
+
+- name: Upload user.yaml to users bucket
+  tags: [s3, user]
+  command: "~/.venv/bin/s3cmd put --force ~/user.yaml s3://{{ gen3_user_bucket_name }}/user.yaml"
+  register: user_yaml_upload
+  changed_when: "'upload:' in user_yaml_upload.stdout"
+
+- name: Remove local user.yaml after upload
+  tags: [s3, user]
+  file:
+    path: ~/user.yaml
+    state: absent
 
 - name: Get rke2-coredns pod IP
   tags: [kubedns]

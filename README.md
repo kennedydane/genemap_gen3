@@ -104,8 +104,9 @@ cp group_vars/all.template group_vars/all
 
 Edit `group_vars/all` and set:
 
-* `argocd_repo_url` — the remote URL of this git repository (used by ArgoCD to pull `gitops/gen3/`)
+* `argocd_repo_url` — the remote URL of this git repository (used by ArgoCD to register the repo; optional if the Application no longer reads from it)
 * `argocd_repo_token` — a GitHub personal access token with read access, if the repository is private; leave empty for public repos
+* `gen3_users` — dict of Gen3 user email addresses and their policies/tags, kept here (gitignored) to avoid committing user details; see the template for the schema
 
 ## Build and deploy
 
@@ -145,13 +146,17 @@ Logs for the parallel step are written to `logs/`.
 
 ## GitOps updates
 
-After the first deploy, Gen3 service configuration is managed via ArgoCD. Changes to `gitops/gen3/values.yaml` are applied automatically when pushed to the remote — no need to re-run Ansible.
+After the first deploy, Gen3 service configuration is managed via the ArgoCD Application, which tracks the upstream `gen3` Helm chart at `https://helm.gen3.org`. All Helm values are embedded in the ArgoCD Application manifest rendered by Ansible from `roles/gen3/templates/argocd-application.yaml.j2`.
 
-To update Gen3 configuration:
+To update Gen3 configuration, edit `group_vars/all` or the relevant Ansible variables and re-run the gen3 playbook:
 
 ```shell
-# Edit gitops/gen3/values.yaml
-git commit -am "chore: update gen3 values"
-git push
+ansible-playbook gen3.yml --tags argocd
 # ArgoCD detects the change and syncs automatically
+```
+
+To update the user access list, edit `gen3_users` in `group_vars/all` and re-run the user upload:
+
+```shell
+ansible-playbook gen3.yml --tags user
 ```
